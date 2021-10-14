@@ -1,0 +1,77 @@
+<!-- book_Ticket.html -->
+
+{% extends 'home.html' %}
+<div class="agile-login">
+{% block content %}
+		<div class="wrapper">
+			<h2>Book tour</h2>
+			<div class="w3ls-form">
+				<form action="/BookTicketApp/bookingdataadd/" method="post">{% csrf_token %}
+                <label>Booking id</label>
+                <input type="text" name="bookingid" value="{{ randomid }}"  readonly maxlength="6">
+                <label>Trvaelling From</label>
+                <select name="source">
+                    <option>Manila</option>
+					<option>Cebu</option>
+                    <option>Laguna</option>
+                    <option>Makati</option>
+                    <option>Negros</option>
+                    <option>Pasig</option>
+                    <option>Batangas</option>
+                    <option>Abra</option>
+                    <option>Baguio</option>
+                    <option>Saranggani</option>
+                    <option>Mindanao</option>
+                </select>
+                <label>To</label>
+                <select name="destination">
+                    <option>Kabankalan</option>
+                    <option>Himamaylan</option>
+                    <option>DUmaguete</option>
+                    <option>Hinigaran</option>
+                    <option>Bago</option>
+                    <option>Valladolid</option>
+                    <option>Guimaras</option>
+                    <option>Iloiolo</option>
+                    <option>Dumangas</option>
+                    <option>Palawan</option>
+                    <option>Antique</option>
+                    <option>Aklan</option>
+                </select>
+                <p style="color: red">{{ request.session.error3 }}</p>
+                <label>Package</label>
+                <select name="package">
+                {% for pack in packs %}
+                    <option value='{{ pack.pname }}'>{{ pack.pname }}</option>
+
+                {% endfor %}
+                </select>
+
+                    <label>Departure date</label>
+                    <input id="datefield" type="date" name="date" onload="setMinDate()">
+                    <script>
+                        setMinDate();
+                        function setMinDate(){
+                            var today = new Date();
+                            var dd = today.getDate();
+                            var mm = today.getMonth()+1;
+                            var yyyy = today.getFullYear();
+                            if(dd<10){
+                                dd='0'+dd
+                            }
+                            if(mm<10){
+                                mm='0'+mm
+                            }
+                            today = yyyy+'-'+mm+'-'+dd;
+                            document.getElementById("datefield").setAttribute("min", today);
+                        }
+                    </script>
+                    <label>No of person</label>
+			    <input type="text" name="person" placeholder="" id="from" required>
+                <input type="submit" value="book" />
+				</form>
+            </div>
+        </div>
+		<br>
+{% endblock %}
+</div>

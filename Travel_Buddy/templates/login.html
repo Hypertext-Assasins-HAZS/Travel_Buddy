@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}<link rel="shortcut icon" type="image/png" href="{%static "../static/loginmodule/images/icon.PNG" %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" integrity="sha512-u7ppO4TLg4v6EY8yQ6T6d66inT0daGyTodAi6ycbw9+/AU8KMLAF7Z7YGKPMRA96v7t+c7O1s6YCTGkok6p9ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Teko&display=swap');
+        *
+        {
+            padding: 0%;
+            margin: 0%;
+        }
+
+        body
+        {
+            padding: 0;
+            margin: 0;
+            font-family: "Teko";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: animate 20s infinite;
+        }
+        
+        @keyframes 
+        animate 
+        {
+
+            0%
+            {
+                background-color: rgb(48, 154, 224);
+            }
+            25%
+            {
+                background-color: seagreen;
+            }
+            50%
+            {
+                background-color: orange;
+            }
+            75%
+            {
+                background-color: rgb(206, 99, 28);
+            }
+            100%
+            {
+                background-color: goldenrod;
+            }
+            
+        }
+
+        .card
+        {
+            width: 40%;
+            height: 55vw;
+            background-color:white;
+            margin: 5vw;
+            border-radius: 1vw;
+            border-style: groove;
+            border-color: white;
+            animation: display .9s ease forwards;
+            box-shadow: black 0px 0px 15px;
+        }
+
+        @keyframes display 
+        {
+          from
+          {
+            opacity: 0;
+            transform: scale(0);
+            filter: blur(4px); 
+              
+          }
+          to
+          {
+            filter: blur(0);
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+
+        .card i
+        {
+            font-size: 2.5vw;
+            margin: 3%;
+            color: black;
+            cursor: pointer;
+        }
+
+        .card i:hover
+        {
+            color: #1A73E8;
+        }
+        
+        h1
+        {
+            text-align: center;
+            font-size:3.5vw ;
+            margin-top: 0%;
+        }
+
+        p
+        {
+            text-align: center;
+            font-size:2.5vw ;
+        }
+
+        .field
+        {
+            width: 85%;
+            height: 9.65%;
+            margin:3vw;
+            box-shadow: black 0px 0px 15px;
+        }
+
+        .card img
+        {
+            width: 16vw;
+            height: 15%;
+            margin-left: 29%;
+        }
+
+        .field i
+        {
+            font-size: 2.7vw;
+            margin: 2.7%;
+            color: black;
+            cursor:auto;
+        }
+
+        .field i:hover
+        {
+            color: black;
+        }
+
+        .field input[type=text],input[type=password]
+        {
+            width:29vw;
+            font-family: "Teko";
+            padding: 2%;
+            font-size: 2.1vw;
+            float: right;
+            box-sizing: border-box;
+            border: none;
+            outline: none;
+        }
+
+
+        .link a
+        {
+            float: left;
+            margin: 3%;
+            margin-left: 10%;
+            font-size: 2vw;
+            text-decoration: none;
+            color: #1A73E8;
+        }
+
+        .link1 
+        {
+            font-size: 2vw;
+            text-decoration: none;
+            margin-top: 23%;
+            text-align: center;
+        }
+
+        .link1 a
+        {
+            text-decoration: none;
+            color: #1A73E8;
+        }
+
+        input[type=submit]
+        {
+            width: 20%;
+            height: 7%;
+            float: right;
+            margin: 2%;
+            margin-right:9% ;
+            font-family: "Teko";
+            font-size: 2vw;
+            background-color:#1A73E8 ;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            border-style: groove;
+            border-color: #1A73E8;
+            box-shadow:#1A73E8 0px 0px 15px;
+        }
+
+		h3
+		{
+			font-size: 2vw;
+			text-align: center;
+		}
+
+        button:hover
+        {
+            background-color:#0756bd ;
+        }
+
+        /*for mobile screens*/
+
+        @media screen and (max-width:500px) {
+
+        .card
+        {
+            width: 90%;
+            height: 119vw;
+            background-color:white;
+            margin: 13vw;
+            margin-top: 30%;
+            border-radius: 2vw;
+            border-style: groove;
+        }
+        
+
+        .card img
+        {
+            width: 39vw;
+            height: 17%;
+            margin: 1%;
+            margin-left: 21%;
+        }
+
+        .card i
+        {
+            font-size: 5.5vw;
+            margin: 3%;
+        }
+
+
+
+        h1
+        {
+            text-align: center;
+            font-size:7.5vw ;
+            margin-top: 0%;
+        }
+
+        p
+        {
+            text-align: center;
+            font-size:5.5vw ;
+        }
+
+        .field
+        {
+            width: 85%;
+            height: 9.65%;
+            margin:5vw;
+            box-shadow: black 0px 0px 9px;
+        }
+
+
+
+        .field i
+        {
+            font-size: 5.7vw;
+            margin: 4%;
+            color: black;
+        }
+
+        .field input[type=text],input[type=password]
+        {
+            width:51vw;
+            font-family: "Teko";
+            padding: 3%;
+            font-size: 5vw;
+            float: right;
+            box-sizing: border-box;
+            border-radius: 1vw;
+            border:none ;
+            outline: none;
+        }
+
+
+        .link a
+        {
+            float: left;
+            margin: 3vw;
+            margin-left: 10%;
+            font-size: 5vw;
+            text-decoration: none;
+            color: #1A73E8;
+        }
+
+        
+        .link1 
+        {
+            font-size: 5vw;
+            text-decoration: none;
+            margin-top: 27%;
+            text-align: center;
+        }
+
+        button
+        {
+            width: 20%;
+            height: 7%;
+            float: right;
+            margin: 3vw;
+            margin-right:11% ;
+            font-family: "Teko";
+            font-size: 5vw;
+            background-color:#1A73E8 ;
+            color: white;
+            border: none;
+            border-radius: 0.5vw;
+            cursor: pointer;
+            box-shadow: #1A73E8 0px 0px 9px;
+        }
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="card">
+        <a href="/Travel_Buddy/home/"><i class="fas fa-arrow-circle-left"></i></a>
+        <br>
+        {% load static %} <img src="{%static "../static/loginmodule/images/travellogo.png" %}" alt="Logo" />
+        <h1>Log In</h1>
+        <p>Log in to your account to proceed</p>
+		<br><h3 style="color: red"> {{ error }}</h3>
+		<form action="/loginmodule/auth/" method="post">{% csrf_token %}
+        <div class="field" style="margin-top: 10%;">
+            <i class="fas fa-user"></i>
+            <input type="text" name="username" placeholder="Username" required>
+        </div>
+        <div class="field">
+            <i class="fas fa-key"></i>
+            <input type="password" name="password" placeholder="Password" required>
+        </div>
+        <input type="submit" value="Log In" />
+	</form>
+        <div class="link"><a href="#">Forgot Password?</a></div>
+        <div class="link1"><a href="/SignupApp/signup/">Create Account</a></div>
+    </div>
+</body>
+</html>
+
+<!-- <div class="agile-login">
+		<div class="wrapper" >
+			<h2>Login</h2>
+			<div class="w3ls-form">
+				<form action="/loginmodule/auth/" method="post">{% csrf_token %}
+					<label>Username</label>
+					<input type="text" name="username" placeholder="Username" required/>
+					<label>Password</label>
+					<input type="password" name="password" placeholder="Password" required />
+                    <input type="submit" value="Log In" />
+				<a href="/SignupApp/signup/" class="pass">Don't have account?SignUp</a>
+				</form>
+			</div>
+            <br><h3 style="color: orangered"> {{ error }}</h3>
+        </div>
+		<br>
+</div>  -->
