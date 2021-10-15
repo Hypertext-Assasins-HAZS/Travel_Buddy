@@ -7,6 +7,8 @@ from django.template.context_processors import csrf
 from BookTicketApp.models import PackageDetails
 
 def home(request):
+	# print(request.user.tmsuser.pic.url)
+
 	c={}
 	c.update(csrf(request))
 	request.session['temp'] = "xyz"

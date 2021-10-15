@@ -4,9 +4,15 @@ from django.db import models
 from SignupApp.models import TMSUser
 
 class PackageDetails(models.Model):
+	# TYPES = [
+    #     ('common','Common'),
+    #     ('special','Special'),
+    #     ('luxury','Luxury'), 
+	# ] 
 	pname = models.CharField(max_length=20,primary_key=True)
 	amount = models.CharField(max_length=5)
-
+	# ptype = models.CharField(max_length=10,choices=TYPES)
+	
 class TMSBooking(models.Model):
 	booking_id=models.CharField(max_length=6,primary_key=True)
 	tmsuser = models.ForeignKey(TMSUser,on_delete=models.CASCADE,null=True)
@@ -18,5 +24,6 @@ class TMSBooking(models.Model):
 	amount=models.PositiveIntegerField()
 
 class feedback(models.Model):
+	
 	tmsuser = models.ForeignKey(TMSUser, on_delete=models.CASCADE, null=True)
 	feedback=models.TextField(max_length=200)
