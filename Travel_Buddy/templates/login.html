@@ -328,7 +328,7 @@
         <h1>Log In</h1>
         <p>Log in to your account to proceed</p>
 		<br><h3 style="color: red"> {{ error }}</h3>
-		<form action="/loginmodule/auth/" method="post">{% csrf_token %}
+		<form action="/Travel_Buddy/auth/" method="post">{% csrf_token %}
         <div class="field" style="margin-top: 10%;">
             <i class="fas fa-user"></i>
             <input type="text" name="username" placeholder="Username" required>
