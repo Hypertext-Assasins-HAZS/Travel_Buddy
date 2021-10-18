@@ -1,4 +1,4 @@
-''' /loginmodule/urls.py '''
+''' /Travel_Buddy/urls.py '''
 
 from Travel_Buddy.views import *
 #from django.contrib.auth import views as auth_views

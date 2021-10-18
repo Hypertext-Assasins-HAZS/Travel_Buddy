@@ -321,12 +321,14 @@
     </style>
 </head>
 <body>
+
     <div class="card">
         <a href="/Travel_Buddy/home/"><i class="fas fa-arrow-circle-left"></i></a>
         <br>
-        {% load static %} <img src="{%static "../static/loginmodule/images/travellogo.png" %}" alt="Logo" />
+        {% load static %} <img src="{%static "../static/Travel_Buddy/images/travellogo.png" %}" alt="Logo" />
         <h1>Log In</h1>
         <p>Log in to your account to proceed</p>
+        <P>{{success}}</P>
 		<br><h3 style="color: red"> {{ error }}</h3>
 		<form action="/Travel_Buddy/auth/" method="post">{% csrf_token %}
         <div class="field" style="margin-top: 10%;">

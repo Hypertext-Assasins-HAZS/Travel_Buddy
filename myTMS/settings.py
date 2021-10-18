@@ -9,6 +9,7 @@ SECRET_KEY = 'n(w2y5d#@+u-kem(0oin#1$+@9=$wlk8!kamfjc*^nua99o9ac'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+  
 
 
 

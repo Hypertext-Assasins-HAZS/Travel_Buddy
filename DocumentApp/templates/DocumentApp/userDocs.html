@@ -1,27 +1,35 @@
-{% extends 'home.html' %}
+{% extends 'bootstrap.html' %}
 
 {% block content %}
 
+<style>
+  .card {
+    width:400px;
+    margin: 20px;
+    background-color: lightblue;
+    
+    font-size:larger;
 
+  }
+</style>
 
 <div class="row"></div>
 
 {% for doc in docs %}
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <a href="#">
-          <img src="{{ doc.docImg.url }}" alt="no image found" style="width:100%">
-          <div class="caption">
-            <p>Type of document   : {{ doc.docType }}</p>
-            <p>Exp of document    : {{ doc.expDate}}</p>
-            <p>Verification Status: {{ doc.verified}}</p>
-
-          </div>
-        </a>
-      </div>
+<div class="col-md-4">
+  <div class="card" >
+    <div class="card-body">
+      <h4 class="card-title">Type of document : {{ doc.docType }}</h4>
+      <p class="card-text">Exp of document : {{ doc.expDate}}</p>
+      <p class="card-text">Verification Status: {{ doc.verified}}</p>
+      <a href="{{ doc.docImg.url }}" class="btn btn-primary">See Document</a>
     </div>
+    <img class="card-img-bottom" src="{{ doc.docImg.url }}" alt="Card image" style="width:100%">
+  </div>
+</div>
+
 {% endfor %}
-</div> 
+</div>
 
 
-{% endblock %} 
+{% endblock %}

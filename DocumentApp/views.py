@@ -14,7 +14,7 @@ def DocumentAdd(request):
             doc = form.save(commit=False) #doc is nothing but an instance..
             doc.user = request.user
             doc.save()
-            print('doc saves !!!!!!!!')
+            return render(request, 'DocumentApp/docAdd.html', {'success' : 'Your document was saved successfully !\nYou can add more documents or go the home page.'})
     else:
         form = DocumentForm()
     return render(request, 'DocumentApp/docAdd.html', {'form' : form})
