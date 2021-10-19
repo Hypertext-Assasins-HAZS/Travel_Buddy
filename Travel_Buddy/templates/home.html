@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <head>
-<link rel="shortcut icon" type="image/png" href="Images/icon.PNG">
+    {% load static %}<link rel="shortcut icon" type="image/png" href="{%static "../static/loginmodule/images/icon.PNG" %}">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap');  
   @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
@@ -42,17 +42,24 @@
     }
 
     .navbar .avatar
-    {
-        border-radius: 100%;
-        margin-top: 1%;
-        margin-right: 1%;
-        width: 2.5%;
-        padding-top: 1.7%;
-        height:20%;
-        font-size: 2vw;
-        text-align: center;
+    { 
+        position: relative;
+        padding: 0%;
+        margin: 0%;
+        width: 9%;
+        height:100%;
         color: white;
-        background-color: gray;
+        background-color: lightgray;
+    }
+
+    .avatar img
+    {
+        position: relative;
+        margin: 5%;
+        margin-top: 11%;
+        border-radius: 100%;
+        width: 6vw;
+        height: 6vw;
     }
 
     .message
@@ -556,7 +563,7 @@
     <div class="navbar">
         <div class="a1">{%load static%}<image src="{%static "../static/loginmodule/images/travellogo.png" %}"  class="navimage" alt="Website Logo"></image></div>
         {% if request.user.is_authenticated %}
-            <a href="#" class="avatar"></a>  <!--Put Image Here-->
+            <a href="#" class="avatar"><img src="{%static "../static/loginmodule/images/user.jpg" %}" alt="Document Protection icon"></a>  <!--Put Image Here-->
         {% endif %}
         <a href="#">CONTACT US</a>
         <a href="/Travel_Buddy/destinations/">DESTINATIONS</a>
@@ -776,56 +783,3 @@
 </html>
 
 
-<!-- home.html
-
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="{% static '/loginmodule/css/font-awesome.css' %}">
-	<link rel="stylesheet" href="{% static '/loginmodule/css/style.css' %}">
-    <link rel="stylesheet" href="{% static '/loginmodule/css/grid.css' %}">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-	<link href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <div class="navigation">
-            <li><h3 style="color: yellow; ">Travel Management Website</h3></li>
-            <ul class="menu">
-
-                <li ><a href="/loginmodule/home/" style="color: yellow;">Home</a></li>
-                {% if request.user.is_authenticated %}
-                    <li><a href="/loginmodule/logout/" style="color: yellow;">Logout</a></li>
-                    {% if request.session.temp != "abc" %}
-                        <li><a href="/BookTicketApp/booking_history/" style="color: yellow;">Booking History</a> </li>
-                    {% else %}
-                        <li><a href="/BookTicketApp/book_ticket/" style="color: yellow;">Book Tour</a></li>
-                        {% endif %}
-                {% else %}
-                    <li><a href="/loginmodule/aboutus/" style="color: yellow;">About Us</a></li>
-                    <li><a href="/SignupApp/signup/" style="color: yellow;">SignUp</a></li>
-                {% endif %}
-                    
-                     <li><a href="/loginmodule/login/" style="color: yellow;">Login</a></li>
-            </ul>
-                {% if request.user.is_authenticated %}
-                     <br><h1 style="color:red " align="right" style="color: yellow;">Welcome  {{ request.session.full_name }}</h1>
-                {% endif %}
-        </div>
-    </header>
-    
-        <div class="logo1">
-        <u style="color:skyblue"><h1 style="color:yellow" align="center">INFORMATION ABOUT PACKAGES</h1></u>
-            <br>
-            <table border="1" style="color: yellow; background-color: green; opacity: 70%;" align="center">
-                <tr><th>Package Name</th><th>Amount</th></tr>
-                {% for pack in packs %}
-                    <tr><td>{{ pack.pname }}</td><td>{{ pack.amount }}</td></tr>
-                {% endfor %}
-            </table>
-        </div>
-        <a href="/BookTicketApp/book_ticket/"><u style="color:seashell"><h1 style="color:Yellow" align="center">Book tour</h1></u></a>
- 
-</body>
-</html> -->

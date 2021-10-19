@@ -10,6 +10,8 @@ urlpatterns=[
     url(r'^logout/',logout),
     url(r'^auth/',auth_view),
     url(r'^destinations/',destinations),
+    url(r'^aboutus/',aboutus),
     url(r'^profile/',profile),
+    url(r'^index/',index),
     url(r'^package_detail/',package_detail),
 ]

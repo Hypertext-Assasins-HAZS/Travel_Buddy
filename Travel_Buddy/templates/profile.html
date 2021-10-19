@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,32 +6,200 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" integrity="sha512-u7ppO4TLg4v6EY8yQ6T6d66inT0daGyTodAi6ycbw9+/AU8KMLAF7Z7YGKPMRA96v7t+c7O1s6YCTGkok6p9ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap');  
     *
     {
         padding: 0%;
         margin: 0%;
     }
+
+    body
+    {
+        background-color: lightgrey;
+    }
     .card
     {
-        margin:5%;
-        width: 90%;
-        height: 40vw;
-        background-color: aquamarine;
+        margin:3%;
+        width: 95%;
+        height: 43vw;
+        background-color: white;
+        border-radius: 20px;
+        background-image:url('{% static "../static/loginmodule/images/card.jpg" %}') ;
     }
 
-    .card img
+    .card .img1
     {   
-        width: 20%;
-        height:50%;
-        margin: 5%;
+        width: 25%;
+        height:63%;
+        margin-top: 1%;
+        margin-left: 5%;
+        float: left;
         background-color: beige;
+        border-radius: 20px;
     }
+
+
+    .brand
+    {
+        width: 95%;
+        height: 7vw;
+        float: left;
+        margin-left: 3%;
+        margin-top: 2%;
+        border-radius: 20px;
+    }
+
+    .brand .logo
+    {
+        position: relative;
+        float: left;
+        height: 7vw;
+        z-index: 1;
+    }
+
+    .brand .verification
+    {
+        position: relative;
+        float: right;
+        height: 7vw;
+        width: 20%;
+        z-index: 1;
+        font-size: 3vw;
+    }
+
+    i
+    {
+        float: left;
+        margin-top: 10%;
+        margin-left: 7%;
+        margin-right: 1%;
+        color: green;
+        background-color: white;
+        border-radius: 100%;
+    }
+
+    .status
+    {
+        float: right;
+        font-family: 'teko';
+        margin-top: 5%;
+        margin-right: 5%;
+    }
+
+
+    .name
+    {
+        width: 67%;
+        height: 35%;
+        float: left;
+        margin-left: 3%;
+        margin-top: 1%;
+    }
+
+    .name-field
+    {
+        width: 78%;
+        height: 12vw;
+        color: black;
+        float: left;
+        margin: 1%;
+    }
+
+    
+    .name-field h1
+    {
+        float: left;
+        margin: 1%;
+        font-size:5vw;
+        margin-right: 10vw;
+        font-family: 'Teko';
+    }
+
+    .name-field p
+    {
+        float: left;
+        margin: 1%;
+        font-size: 2.5vw;
+        font-family: 'Teko';
+    }
+
+    .container
+    {
+        float: left;
+        width:60%;
+        height:25%;
+        margin: 1%;
+        margin-left: 3%;
+    }
+
+    .field
+    {
+        width: 48%;
+        height: 4vw;
+        color: black;
+        float: left;
+       margin: 1%;
+    }
+
+    .field h1
+    {
+        float: left;
+        margin: 1%;
+        font-size: 2.5vw;
+        font-family: 'Teko';
+    }
+
+    .field p
+    {
+        float: left;
+        margin: 1%;
+        font-size: 2.5vw;
+        font-family: 'Teko';
+    }
+    
+    
 </style>
 <body>
     <div class="card">
-        <img src="Images/user.jpg" alt="Your Picture">
+
+        <div class="brand">
+            {%load static%}<img class="logo" src="{%static "../static/loginmodule/images/travellogo.png" %}" alt="Your Picture">
+            <div class="verification"><i class="fas fa-check-circle"></i><h3 class="status">Verified User</h3></div>  
+        </div>
+        
+        {%load static%}<img class="img1" src="{%static "../static/loginmodule/images/user.jpg" %}" alt="Your Picture">
+        <div class="name">
+            <div class="name-field">
+                <h1>Sufyan Sirajuddin Dawnak</h1>
+                <p>sufyan1234</p>
+            </div>
+        </div>
+
+
+        <div class="container">
+        <div class="field">
+            <h1>Nationality :</h1>
+            <p>Indian</p>
+        </div>
+        
+        <div class="field">
+            <h1>Date of Birth :</h1>
+            <p>11/01/2002</p>
+        </div>
+        
+        <div class="field">
+            <h1>Last Login :</h1>
+            <p>11pm</p>
+        </div>
+        
+        <div class="field">
+            <h1>Date Joined :</h1>
+            <p>10/18/2021</p>
+        </div>
+    </div>
     </div>
 </body>
 </html>
