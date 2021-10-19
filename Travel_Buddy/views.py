@@ -49,3 +49,4 @@ def package_detail(request):
 def destinations(request):
 	request.session['temp'] = "xyz"
 	return render(request,'destinations.html')
+

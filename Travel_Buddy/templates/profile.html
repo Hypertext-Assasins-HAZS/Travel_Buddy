@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% extends 'bootstrap.html' %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,30 +8,36 @@
     <title>Profile</title>
 </head>
 <style>
-    *
-    {
-        padding: 0%;
-        margin: 0%;
-    }
-    .card
-    {
-        margin:5%;
-        width: 90%;
-        height: 40vw;
-        background-color: aquamarine;
-    }
+    
+    .card{
+        padding:10px;
 
-    .card img
-    {   
-        width: 20%;
-        height:50%;
-        margin: 5%;
-        background-color: beige;
     }
+    
 </style>
 <body>
-    <div class="card">
-        <img src="Images/user.jpg" alt="Your Picture">
+    {% block content %}
+    <div class="jumbotron">
+        
+    <div class="card" style="width:500px; padding:10px; margin: 100px; border-radius:10px; background-color:aquamarine">
+        <img class="card-img-top" src="{{request.user.tmsuser.pic.url}}" alt="Card image" style="width:200px; height:auto">
+        <div class="card-body">
+          <h4 class="card-title">{{request.user.first_name}} {{request.user.last_name}}</h4>
+          <p class="card-text">{{request.user.email}}</p>
+          <p class="card-text">{{request.user.username}}</p>
+          <p class="card-text">Verification status :{{request.user.tmsuser.verified}}</p>
+          {% if request.user.is_superuser %}
+          <p class="card-text">You are the SuperMan aka <strong>SuperUser</strong></p>
+          {% endif %}
+          <p class="card-text">Last Login: {{request.user.last_login}}</p>
+          <p class="card-text">Date Joined: {{request.user.date_joined}}</p>
+          <a href="/DocumentApp/userDocs/" class="btn btn-primary">See Documents</a>
+          <a href="/DocumentApp/docAdd/" class="btn btn-warning ">Add Document</a>
+          <a href="/DocumentApp/userDocs/" class="btn btn-danger ">Remove Document</a>
+        </div>
+      </div>
     </div>
+    {% endblock %}
+
 </body>
 </html>

@@ -1,15 +1,58 @@
 <!-- signup.html -->
 
-{% extends 'home.html' %}
-<div class="agile-login">
+{% extends 'bootstrap.html' %}
+{% load static %}
+
 {% block content %}
-		<div class="wrapper">
+{% load crispy_forms_tags %}
+<style>
+	.form-group {
+		width: 50%;
+		padding-top: 1em;
+	}
+	.col{
+		margin-left: 2em;
+		
+	}
+	#signup-img{
+		height: 50%;
+		width: 90%;
+	}
+</style>
+<div class="row">
+	<div class="col">
+		<div class="container p-5 my-5 border" style="border-top: 5px solid; background-color: lightgrey; border-radius: 20px;">
+			<h1>Signup Form</h1>
+			<h3>Please Fill out the below form to Register youself as a travelBuddy user</h3>
+			<br>
+			<form action="/SignupApp/signup/" method="POST">
+				{% csrf_token %}
+				{{ user_form|crispy }}
+				{{ tmsUser_form|crispy }}
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+	<div class="col" style="margin-top:10em;">
+		<img id="signup-img" src="{%static "../static/SignupApp/images/signupimg.png" %}" alt="">
+	</div>
+</div>
+
+<h1>{{success}}</h1>
+
+
+{% endblock %}
+</div>
+
+
+<!-- <div class="wrapper">
 			<h2>SignUp</h2>
-			<div class="w3ls-form">
+			<div class="w3ls-form" style>
 				<form action="/SignupApp/adduserinfo/" method="post" enctype="multipart/form-data">
 					{% csrf_token %}
 					<label>Username</label>
 					<input type="text" name="username" placeholder="Username" required/>
+					<p style="color:Red">{{error5}}</p>
 					<label>Password</label>
 					<input type="password" name="password" placeholder="Enter Password(atleast 8 char)" required />
                     <p style="color:Red">{{error1}}</p>
@@ -30,6 +73,4 @@
 				</form>
             </div>
         </div>
-		<br>
- {% endblock %}
-</div>
+		<br>-->
