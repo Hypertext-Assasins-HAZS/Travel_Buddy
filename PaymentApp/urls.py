@@ -2,9 +2,10 @@
 
 from PaymentApp.views import *
 from django.conf.urls import url
+from django.urls import path
 
 urlpatterns=[
-	url(r'^CalculateAmount/',CalculateAmount),
-	url(r'^makepayment/',makepayment),
-	url(r'^bill/',bill),
+	path('CalculateAmount/',CalculateAmount),
+	path('makepayment/',makepayment),
+	path('bill/',bill),
 ]

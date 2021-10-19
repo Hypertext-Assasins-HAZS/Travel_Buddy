@@ -1,0 +1,42 @@
+{% extends 'bootstrap.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<style>
+    .jumbotron{
+        width:53%;
+        margin:50px;
+        background-color:blanchedalmond;
+        padding:20px;
+        border-radius: 10px;
+    }
+    .form-group{
+        padding:10px;
+    }
+    a{
+        padding:10px;
+        margin:10px;
+    }
+</style>
+
+<div class="jumbotron">
+    
+    
+   
+    {% if success %}
+        <h1>{{ success }}</h1>
+        <a href="/Travel_Buddy/home/" class="btn btn-success">Go to Home-Page</a>
+        <a href="/DocumentApp/docAdd/" class="btn btn-warning">Add another Document</a>
+    {% else %}
+    <form method="POST" action="#" enctype="multipart/form-data">
+        <h1>Form for adding new Document</h1>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <input type="submit" class="btn btn-primary" value="Add Document">
+    </form>
+    {% endif %}
+</div>
+
+
+{% endblock %}

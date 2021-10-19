@@ -1,17 +1,17 @@
-''' /loginmodule/urls.py '''
+''' /Travel_Buddy/urls.py '''
 
 from Travel_Buddy.views import *
 #from django.contrib.auth import views as auth_views
 from django.conf.urls import url
+from django.urls import path
 
 urlpatterns=[
-    url(r'^home/',home),
-    url(r'^login/',login),
-    url(r'^logout/',logout),
-    url(r'^auth/',auth_view),
-    url(r'^destinations/',destinations),
-    url(r'^aboutus/',aboutus),
-    url(r'^profile/',profile),
-    url(r'^index/',index),
-    url(r'^package_detail/',package_detail),
+    path('home/',home),
+    path('index/',index),
+    path('login/',login),
+    path('logout/',logout),
+    path('auth/',auth_view),
+    path('destinations/',destinations),
+    path('profile/',profile),
+    path('package_detail/',package_detail),
 ]

@@ -5,7 +5,7 @@ from Destinations_info.views import *
 from django.conf.urls import url
 
 urlpatterns=[
-    url(r'^Paris/',paris),
-    url(r'^Toronto/',toronto),
+    url(r'Paris/',paris),
+    url(r'Toronto/',toronto),
     
 ]

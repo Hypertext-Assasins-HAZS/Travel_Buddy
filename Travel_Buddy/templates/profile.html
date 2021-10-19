@@ -27,7 +27,8 @@
         height: 43vw;
         background-color: white;
         border-radius: 20px;
-        background-image:url('{% static "../static/loginmodule/images/card.jpg" %}') ;
+        background-image:url('{% static "/Travel_Buddy/images/card.jpg" %}') ;
+        background-size: cover;
     }
 
     .card .img1
@@ -166,11 +167,11 @@
     <div class="card">
 
         <div class="brand">
-            {%load static%}<img class="logo" src="{%static "../static/loginmodule/images/travellogo.png" %}" alt="Your Picture">
+            {%load static%}<img class="logo" src="{%static "../static/Travel_Buddy/images/travellogo.png" %}" alt="Your Picture">
             <div class="verification"><i class="fas fa-check-circle"></i><h3 class="status">Verified User</h3></div>  
         </div>
         
-        {%load static%}<img class="img1" src="{%static "../static/loginmodule/images/user.jpg" %}" alt="Your Picture">
+        {%load static%}<img class="img1" src="{%static "../static/Travel_Buddy/images/user.jpg" %}" alt="Your Picture">
         <div class="name">
             <div class="name-field">
                 <h1>Sufyan Sirajuddin Dawnak</h1>
@@ -201,5 +202,6 @@
         </div>
     </div>
     </div>
+
 </body>
 </html>

@@ -9,6 +9,7 @@ SECRET_KEY = 'n(w2y5d#@+u-kem(0oin#1$+@9=$wlk8!kamfjc*^nua99o9ac'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+  
 
 
 
@@ -20,10 +21,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Destinations_info',
+    'media',
     'Travel_Buddy',
     'SignupApp',
     'BookTicketApp',
     'PaymentApp',
+    'DocumentApp',
 ]
 
 MIDDLEWARE = [
@@ -109,3 +112,9 @@ STATIC_URL = '/static/'
 LOGIN_URL = '/Travel_Buddy/login/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -2,12 +2,14 @@
 
 from BookTicketApp.views import *
 from django.conf.urls import url
+from django.urls import path
+
 
 urlpatterns=[
-	url(r'^book_ticket/',book_ticket),
-	url(r'^bookingdataadd/',bookingdataadd),
-	url(r'^booking_history/', booking_history),
-	url(r'^delete/',delete),
-	url(r'^feedback/',feedback),
+	path('book_ticket/',book_ticket),
+	path('bookingdataadd/',bookingdataadd),
+	path('booking_history/', booking_history),
+	path('delete/',delete),
+	path('feedback/',feedback),
 
 ]
