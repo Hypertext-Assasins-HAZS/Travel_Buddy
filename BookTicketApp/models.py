@@ -2,16 +2,21 @@
 
 from django.db import models
 from SignupApp.models import TMSUser
+from django.contrib.auth.models import User
+from django.utils import timezone
+
 
 class PackageDetails(models.Model):
-	# TYPES = [
-    #     ('common','Common'),
-    #     ('special','Special'),
-    #     ('luxury','Luxury'), 
-	# ] 
+	TYPES = [
+        ('common','Common'),
+        ('special','Special'),
+        ('luxury','Luxury'), 
+	] 
 	pname = models.CharField(max_length=20,primary_key=True)
-	amount = models.CharField(max_length=5)
-	# ptype = models.CharField(max_length=10,choices=TYPES)
+	pdetails = models.TextField(max_length=200,default='no package details provided !')
+	pic = models.ImageField(default='pdefault.jpg',upload_to='package_pics')
+	amount = models.CharField(default='1000',max_length=5)
+	ptype = models.CharField(default='common',max_length=10,choices=TYPES)
 	
 class TMSBooking(models.Model):
 	booking_id=models.CharField(max_length=6,primary_key=True)
@@ -19,8 +24,8 @@ class TMSBooking(models.Model):
 	source = models.CharField(max_length=20)
 	destination = models.CharField(max_length=20)
 	package = models.ForeignKey(PackageDetails,on_delete=models.CASCADE,null=True)
-	departure_date = models.DateField()
-	no_of_person = models.PositiveIntegerField(default=0)
+	departure_date = models.DateField(blank=True,default=timezone.now)
+	no_of_person = models.PositiveIntegerField(default=1)
 	amount=models.PositiveIntegerField()
 
 class feedback(models.Model):

@@ -325,12 +325,13 @@
     <div class="card">
         <a href="/Travel_Buddy/home/"><i class="fas fa-arrow-circle-left"></i></a>
         <br>
-        {% load static %} <img src="{%static "../static/Travel_Buddy/images/travellogo.png" %}" alt="Logo" />
+        <img src="{%static "/Travel_Buddy/images/travellogo.png" %}" alt="Logo" />
         <h1>Log In</h1>
         <p>Log in to your account to proceed</p>
         <P>{{success}}</P>
 		<br><h3 style="color: red"> {{ error }}</h3>
-		<form action="/Travel_Buddy/auth/" method="post">{% csrf_token %}
+		<form action="/Travel_Buddy/login/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
         <div class="field" style="margin-top: 10%;">
             <i class="fas fa-user"></i>
             <input type="text" name="username" placeholder="Username" required>
@@ -347,20 +348,4 @@
 </body>
 </html>
 
-<!-- <div class="agile-login">
-		<div class="wrapper" >
-			<h2>Login</h2>
-			<div class="w3ls-form">
-				<form action="/loginmodule/auth/" method="post">{% csrf_token %}
-					<label>Username</label>
-					<input type="text" name="username" placeholder="Username" required/>
-					<label>Password</label>
-					<input type="password" name="password" placeholder="Password" required />
-                    <input type="submit" value="Log In" />
-				<a href="/SignupApp/signup/" class="pass">Don't have account?SignUp</a>
-				</form>
-			</div>
-            <br><h3 style="color: orangered"> {{ error }}</h3>
-        </div>
-		<br>
-</div>  -->
+

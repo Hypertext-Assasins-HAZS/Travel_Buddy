@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Destinations_info',
+    'crispy_forms',
     'media',
     'Travel_Buddy',
     'SignupApp',

@@ -1,342 +1,334 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        {% load static %}<link rel="shortcut icon" type="image/png" href="{%static "../static/loginmodule/images/icon.PNG" %}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" integrity="sha512-u7ppO4TLg4v6EY8yQ6T6d66inT0daGyTodAi6ycbw9+/AU8KMLAF7Z7YGKPMRA96v7t+c7O1s6YCTGkok6p9ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <style>
-           @import url('https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap');
-           @import url('https://fonts.googleapis.com/css2?family=Carattere&display=swap');
-            *
-            {
-                margin: 0;
-                padding: 0;
-            }
-            
-            body
-            {
-                height: 85vw;
-            }
 
-            .container 
-            {
-                width:100%;
-                margin: 0%;
-                padding: 1%;
-                height: 5vw;
-                overflow: hidden;
-                z-index: 1;
-                background-color:black;
-                box-sizing: border-box;
-            }
+<head>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{%static " Travel_Buddy/images/icon.PNG" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+        integrity="sha512-u7ppO4TLg4v6EY8yQ6T6d66inT0daGyTodAi6ycbw9+/AU8KMLAF7Z7YGKPMRA96v7t+c7O1s6YCTGkok6p9ZA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Carattere&display=swap');
 
-            .container a
-            {
-                font-size: 1.9vw;
-                float: right;
-                display: block;
-                color: white;
-                font-family:"Teko";
-                text-align: center;
-                margin-top: -0.7%;
-                padding: 1%;
-                text-decoration: none;
-                cursor: pointer;
-            }
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
-            .container a:hover
-            {
-                color:rgb(252, 115, 35);
-            }
+        body {
+            height: 85vw;
+        }
 
-            
-            .p1
-            {
-                font-size: 1.5vw;
-                float: left;
-                display: block;
-                color: white;
-                font-family:"Teko";
-                text-align: center;
-                padding: 0.3vw 1vw;
-                text-decoration: none;
-            }
+        .container {
+            width: 100%;
+            margin: 0%;
+            padding: 1%;
+            height: 5vw;
+            overflow: hidden;
+            z-index: 1;
+            background-color: black;
+            box-sizing: border-box;
+        }
 
-            .navbar
-            {
-                width: 100%;
-                height: 8vw;
-                overflow: hidden;
-                background-color: whitesmoke;
-            }
+        .container a {
+            font-size: 1.9vw;
+            float: right;
+            display: block;
+            color: white;
+            font-family: "Teko";
+            text-align: center;
+            margin-top: -0.7%;
+            padding: 1%;
+            text-decoration: none;
+            cursor: pointer;
+        }
 
-            .navbar a
-            {
-                position:sticky;
-                font-size: 2vw;
-                float: right;
-                display: block;
-                color: #6C717A;
-                font-family:"Teko";
-                text-align: center;
-                padding: 2.7vw 2vw;
-                text-decoration: none;
-            }
-
-            .navbar a:hover
-            {
-                color:rgb(245, 185, 73);
-            }
-
-            .navbar .a1
-            {
-                float: left;
-                display: block;
-            }
-
-            .navbar .avatar
-            { 
-                position: relative;
-                padding: 0%;
-                margin: 0%;
-                width: 9%;
-                height:100%;
-                color: white;
-                background-color: lightgray;
-            }
-
-            .avatar img
-            {
-                position: relative;
-                margin: 5%;
-                margin-top: 11%;
-                border-radius: 100%;
-                width: 6vw;
-                height: 6vw;
-            }
-
-            .navimage
-            {
-                position:absolute;
-                text-align: left;
-                width:19vw; 
-                height:8vw;
-            }
+        .container a:hover {
+            color: rgb(252, 115, 35);
+        }
 
 
-            .heading
-            {
-               text-align: center; 
-               font-family: "Carattere";
-               font-size: 5vw;
-               margin: 3%;
-            }
+        .p1 {
+            font-size: 1.5vw;
+            float: left;
+            display: block;
+            color: white;
+            font-family: "Teko";
+            text-align: center;
+            padding: 0.3vw 1vw;
+            text-decoration: none;
+        }
 
-            .heading i
-            {
-                padding: 1%;
-            }
+        .navbar {
+            width: 100%;
+            height: 8vw;
+            overflow: hidden;
+            background-color: whitesmoke;
+        }
 
-            .column
-            {
-                width: 90%;
-                margin: 5vw;
-                height: 85%;
-                font-size: 3vw;
-                padding:1%;
-                font-family: "Carattere";
-                color: black;
-                border-radius: 20px;
-                box-shadow: black 0px 0px 13px;
-                padding-bottom: 5%;
-            }
-            
+        .navbar a {
+            position: sticky;
+            font-size: 2vw;
+            float: right;
+            display: block;
+            color: #6C717A;
+            font-family: "Teko";
+            text-align: center;
+            padding: 2.7vw 2vw;
+            text-decoration: none;
+        }
 
-            h2
-            {
-                text-align: center;
-                margin: 10%;
-            }
+        .navbar a:hover {
+            color: rgb(245, 185, 73);
+        }
+
+        .navbar .a1 {
+            float: left;
+            display: block;
+        }
+
+        .navbar .avatar {
+            position: relative;
+            padding: 0%;
+            margin: 0%;
+            width: 9%;
+            height: 100%;
+            color: white;
+            background-color: lightgray;
+        }
+
+        .avatar img {
+            position: relative;
+            margin: 5%;
+            margin-top: 11%;
+            border-radius: 100%;
+            width: 6vw;
+            height: 6vw;
+        }
+
+        .navimage {
+            position: absolute;
+            text-align: left;
+            width: 19vw;
+            height: 8vw;
+        }
 
 
-            h2 i
-            {
-               padding-right:3%;
-            }
+        .heading {
+            text-align: center;
+            font-family: "Carattere";
+            font-size: 5vw;
+            margin: 3%;
+        }
 
-            .column .info
-            {
-                margin-top: 7%;
-                position: relative;
-                font-family:"Teko";
-                float: left;
-                font-size: 3vw;
-                text-align: justify;
-            }
+        .heading i {
+            padding: 1%;
+        }
 
-            ul
-            {
-                float: left;
-                padding-left: 13%;
-                margin-top: 2%;
-            }
+        .column {
+            width: 90%;
+            margin: 5vw;
+            height: 85%;
+            font-size: 3vw;
+            padding: 1%;
+            font-family: "Carattere";
+            color: black;
+            border-radius: 20px;
+            box-shadow: black 0px 0px 13px;
+            padding-bottom: 5%;
+        }
 
-            .footer
-            {
-                width: 100%;
-                height: 25vw;
-                background-color: #262e3d;
-            }
 
-            .footer .column2 {
+        h2 {
+            text-align: center;
+            margin: 10%;
+        }
 
-                float: left;
-                top: 1vw;
-                width: 23%;
-                height: 20vw;
-                margin-left: 1vw;
-                margin-right: 0.7vw;
-                margin-top: 1vw;
-                z-index: 1; 
-            }
 
-            .column2 .heading1
-            {
-                color:white;
-                position:relative;
-                font-family:"Teko";
-                font-size: 2.5vw;
-                margin-left: 0.9vw;
-                margin-top: 1.5vw;
-            }
+        h2 i {
+            padding-right: 3%;
+        }
 
-            
-            .column2 .description
-            {
-                color: white;
-                font-family:"Teko";
-                font-size: 1.9vw;
-                margin-left: 0.9vw;
-                margin-right: 3.7vw;
-                margin-top: 1.5vw;
-            }
+        .column .info {
+            margin-top: 7%;
+            position: relative;
+            font-family: "Teko";
+            float: left;
+            font-size: 3vw;
+            text-align: justify;
+        }
 
-            .column2 .link1
-            {
-                color: white;
-                font-family:"Teko";
-                font-size: 1.9vw;
-                margin-left: 0.9vw;
-                margin-top: 1.5vw;
-            }
+        ul {
+            float: left;
+            padding-left: 13%;
+            margin-top: 2%;
+        }
 
-            
-            .column2 .links
-            {
-                color: white;
-                font-family:"Teko";
-                font-size: 1.9vw;
-                margin-left: 0.9vw;
-                margin-top: 0.5vw;
-            }
+        .footer {
+            width: 100%;
+            height: 25vw;
+            background-color: #262e3d;
+        }
 
-            .link1:hover,.links:hover
-            {
-                color: #57a7e9;
-            }
+        .footer .column2 {
 
-            .column2 .contact
-            {
-                margin-top: 1.5vw;
-                height: 11%;
-                width: 50%;
-            }
+            float: left;
+            top: 1vw;
+            width: 23%;
+            height: 20vw;
+            margin-left: 1vw;
+            margin-right: 0.7vw;
+            margin-top: 1vw;
+            z-index: 1;
+        }
 
-            .column2 .mail
-            {
-                margin-top: 1.5vw;
-                height: 11%;
-                width: 90%;
-            }
+        .column2 .heading1 {
+            color: white;
+            position: relative;
+            font-family: "Teko";
+            font-size: 2.5vw;
+            margin-left: 0.9vw;
+            margin-top: 1.5vw;
+        }
 
-            .contact img
-            {
-                height:3vw;
-                width: 3vw;
-                border-radius: 10vw;
-                float: left;
-            }
 
-            .contact  .text
-            {
-                margin-left: 1vw;
-                color: white;
-                font-family: "Teko";
-                font-size: 2vw;
-                float: right;
-            }
+        .column2 .description {
+            color: white;
+            font-family: "Teko";
+            font-size: 1.9vw;
+            margin-left: 0.9vw;
+            margin-right: 3.7vw;
+            margin-top: 1.5vw;
+        }
 
-            .mail img
-            {
-                height:3vw;
-                width: 3vw;
-                border-radius: 10vw;
-                float: left;
-            }
+        .column2 .link1 {
+            color: white;
+            font-family: "Teko";
+            font-size: 1.9vw;
+            margin-left: 0.9vw;
+            margin-top: 1.5vw;
+        }
 
-            .mail  .text
-            {
-                margin-left: 3vw;
-                color: white;
-                font-family: "Teko";
-                font-size: 2vw;
-                float: left;
-            }
 
-            .end
-            {
-                width: 100%;
-                height: 5.5vw;
-                background-color: #2f58a3;
-                float: left;
-                color: white;
-                font-family: "Teko";
-                font-size: 2vw;
-                text-align: center;
-                padding-top: 2vw;
-            }
+        .column2 .links {
+            color: white;
+            font-family: "Teko";
+            font-size: 1.9vw;
+            margin-left: 0.9vw;
+            margin-top: 0.5vw;
+        }
 
-        </style>
-    </head>
-    <body>
-        <title>Package Detail</title>
-        <div class="container">
-            <p class="p1">9998887723</p>
-            <p class="p1">.</p>
-            <p class="p1">travelbuddy@gmail.com</p>
-            <p class="p1">.</p>
-            <p class="p1">Mumbai, India</p>
-            <a href="/SignupApp/signup/">Sign Up</a>
-            <a href="/Travel_Buddy/login">Sign In</a>
+        .link1:hover,
+        .links:hover {
+            color: #57a7e9;
+        }
+
+        .column2 .contact {
+            margin-top: 1.5vw;
+            height: 11%;
+            width: 50%;
+        }
+
+        .column2 .mail {
+            margin-top: 1.5vw;
+            height: 11%;
+            width: 90%;
+        }
+
+        .contact img {
+            height: 3vw;
+            width: 3vw;
+            border-radius: 10vw;
+            float: left;
+        }
+
+        .contact .text {
+            margin-left: 1vw;
+            color: white;
+            font-family: "Teko";
+            font-size: 2vw;
+            float: right;
+        }
+
+        .mail img {
+            height: 3vw;
+            width: 3vw;
+            border-radius: 10vw;
+            float: left;
+        }
+
+        .mail .text {
+            margin-left: 3vw;
+            color: white;
+            font-family: "Teko";
+            font-size: 2vw;
+            float: left;
+        }
+
+        .end {
+            width: 100%;
+            height: 5.5vw;
+            background-color: #2f58a3;
+            float: left;
+            color: white;
+            font-family: "Teko";
+            font-size: 2vw;
+            text-align: center;
+            padding-top: 2vw;
+        }
+    </style>
+</head>
+
+<body>
+    <title>Package Detail</title>
+    <div class="container">
+        <p class="p1">9998887723</p>
+        <p class="p1">.</p>
+        <p class="p1">travelbuddy@gmail.com</p>
+        <p class="p1">.</p>
+        <p class="p1">Mumbai, India</p>
+        {% if request.user.is_authenticated %}
+        <a href="/Travel_Buddy/logout">Logout</a>
+        {% endif %}
+        {% if request.user.is_superuser %}
+        <a href="/admin/" id="admin" target="_blank">Admin Console</a>
+        {% endif %}
+
+        {% if request.user.is_authenticated %}
+
+        {% else %}
+        <div class="message arrow-top">This Console is designed for Admin, Security and Embassy use.<br> Don't use it if
+            you're not an admin.</div>
+        <a href="/SignupApp/signup/">Sign Up</a>
+        <a href="/Travel_Buddy/login">Sign In</a>
+        {% endif %}
+    </div>
+    <div class="navbar">
+        <div class="a1">{%load static%}<image src="{%static "/Travel_Buddy/images/travellogo.png" %}" class="navimage"
+                alt="Website Logo"></image>
         </div>
-        <div class="navbar">
-            <div class="a1">{%load static%}<image src="{%static "../static/loginmodule/images/travellogo.png" %}"  class="navimage" alt="Website Logo"></image></div>
-            {% if request.user.is_authenticated %}
-                <a href="#" class="avatar"><img src="{%static "../static/loginmodule/images/user.jpg" %}" alt="Document Protection icon"></a>  <!--Put Image Here-->
-            {% endif %}
-            <a href="#">CONTACT US</a>
-            <a href="/Travel_Buddy/destinations/">DESTINATIONS</a>
-            <a href="">PLAN A TOUR</a>
-            <a href="/Travel_Buddy/profile/">PROFILE</a>
-            <a href="/Travel_Buddy/home/">HOME</a>
-        </div>
+        {% if request.user.is_authenticated %}
+        <a href="/Travel_Buddy/profile/" class="avatar"><img src="{{ request.user.tmsuser.pic.url }}"
+                alt="Document Protection icon"></a>
+        <!--Put Image Here-->
+        {% endif %}
+        <a href="#">ABOUT US</a>
+        <a href="/Travel_Buddy/destinations/">DESTINATIONS</a>
+        {% if request.user.is_authenticated %}
+        <a href="/BookTicketApp/book_ticket">PLAN A TOUR</a>
+        <a href="/Travel_Buddy/profile/">PROFILE</a>
+        {% endif %}
+        <a href="/Travel_Buddy/home/">HOME</a>
+    </div>
 
-        <h1 class="heading"><i class="fas fa-cube"></i>Packages</h1>
-            <div class="column">
-            <h2><i class="fas fa-circle"></i>Common Package</h>
-            <div class="info">This package gives you all the common facilities which are essential for your 
+    <h1 class="heading"><i class="fas fa-cube"></i>Packages</h1>
+    <div class="column">
+        <h2><i class="fas fa-circle"></i>Common Package</h>
+            <div class="info">This package gives you all the common facilities which are essential for your
                 tour. You can enjoy delicious food that is specially choosen by us for you. We also book your Flight
                 Tickets and do your Hotel Reservation so that you can enjoy your tour without any worries.
-                <br> 
+                <br>
                 <br>
                 What is on us ?
                 <br>
@@ -346,14 +338,14 @@
                     <li>Hotel</li>
                 </ul>
             </div>
-        </div>
+    </div>
 
-        <div class="column" style="background-color: silver;">
-            <h2><i class="fas fa-star"></i>Special Package</h>
-            <div class="info">This package will give you a special experience around your tour. 
-                Along with the facilities in common tour package we give pick and drop facility to different 
+    <div class="column" style="background-color: silver;">
+        <h2><i class="fas fa-star"></i>Special Package</h>
+            <div class="info">This package will give you a special experience around your tour.
+                Along with the facilities in common tour package we give pick and drop facility to different
                 locations along your tour which is specially designed for you.
-                <br> 
+                <br>
                 <br>
                 What is on us ?
                 <br>
@@ -365,14 +357,14 @@
                     <li>Pick up and drop facility</li>
                 </ul>
             </div>
-        </div>
+    </div>
 
-        <div class="column" style="background-color: gold;">
-            <h2><i class="fas fa-certificate"></i>Luxury Package</h>
+    <div class="column" style="background-color: gold;">
+        <h2><i class="fas fa-certificate"></i>Luxury Package</h>
             <div class="info">This package gives you Luxury treatment along your tour. Special Meals, Luxury Hotel,
                 First class Flight also a option to ride a luxury car of your wish. Experience the Royal Treatment
-                of Travel Buddy.  
-                <br> 
+                of Travel Buddy.
+                <br>
                 <br>
                 What is on us ?
                 <br>
@@ -385,38 +377,56 @@
                     <li>Option To ride a luxury car of your choice</li>
                 </ul>
             </div>
+    </div>
+
+    <div class="footer">
+        <div class="column2">
+            <div class="heading1">ABOUT</div>
+            <div class="description">Travel Buddy is a travel website which manages all your travelling data including
+                your Flight details,
+                Hotel details and much more ... </div>
         </div>
-        
-        <div class="footer">
-            <div class="column2">
-                <div class="heading1">ABOUT</div>
-                <div class="description">Travel Buddy is a travel website which manages all your travelling data including your Flight details,
-                     Hotel details and much more ... </div>
-            </div>
-    
-            <div class="column2">
-                <div class="heading1">LINKS</div>
-                <a href="#" style="text-decoration: none;"><div class="link1">Help Center</div></a>
-                <a href="/Travel_Buddy/destinations/" style="text-decoration: none;"><div class="links">Destinations</div></a>
-                <a href="/Travel_Buddy/package_detail/" style="text-decoration: none;"><div class="links">Package Details</div></a>
-                <a href="#" style="text-decoration: none;"><div class="links">Privacy Policy</div></a>
-                <a href="#" style="text-decoration: none;"><div class="links">View Rules</div></a>
-            </div>
-    
-            <div class="column2">
-                <div class="heading1">INFO</div>
-                <div class="description">This website was made my the Hypertext-Assasins-HAZS Group
-                    in order to provide all in one platform to the users and ease of usage
-                </div>
-            </div>
-    
-            <div class="column2">
-                <div class="heading1">CONTACT</div>
-                <div class="contact">{%load static%}<img src="{%static "../static/loginmodule/images/phone.jpg" %}"><div class="text">99878222</div></div>
-                <div class="mail">{%load static%}<img src="{%static "../static/loginmodule/images/mail.jpg" %}"><div class="text">travelbuddy@gmail.com</div></div>
-                <div class="contact">{%load static%}<img src="{%static "../static/loginmodule/images/location.jpg" %}"><div class="text">Mumbai,In</div></div>
+
+        <div class="column2">
+            <div class="heading1">LINKS</div>
+            <a href="#" style="text-decoration: none;">
+                <div class="link1">Help Center</div>
+            </a>
+            <a href="/Travel_Buddy/destinations/" style="text-decoration: none;">
+                <div class="links">Destinations</div>
+            </a>
+            <a href="/Travel_Buddy/package_detail/" style="text-decoration: none;">
+                <div class="links">Package Details</div>
+            </a>
+            <a href="#" style="text-decoration: none;">
+                <div class="links">Privacy Policy</div>
+            </a>
+            <a href="#" style="text-decoration: none;">
+                <div class="links">View Rules</div>
+            </a>
+        </div>
+
+        <div class="column2">
+            <div class="heading1">INFO</div>
+            <div class="description">This website was made my the Hypertext-Assasins-HAZS Group
+                in order to provide all in one platform to the users and ease of usage
             </div>
         </div>
-        <div class="end">© Copyright Reserved with Hypertext-Assasins-HAZS</div>
-    </body>
+
+        <div class="column2">
+            <div class="heading1">CONTACT</div>
+            <div class="contact">{%load static%}<img src="{%static "Travel_Buddy/images/phone.jpg" %}">
+                <div class="text">99878222</div>
+            </div>
+            <div class="mail">{%load static%}<img src="{%static "Travel_Buddy/images/mail.jpg" %}">
+                <div class="text">travelbuddy@gmail.com</div>
+            </div>
+            <div class="contact">{%load static%}<img src="{%static "Travel_Buddy/images/location.jpg" %}">
+                <div class="text">Mumbai,In</div>
+            </div>
+        </div>
+    </div>
+    <div class="end">© Copyright Reserved with Hypertext-Assasins-HAZS</div>
+</body>
+
 </html>

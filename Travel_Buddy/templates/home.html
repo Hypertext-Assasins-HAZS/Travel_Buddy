@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <head>
-    {% load static %}<link rel="shortcut icon" type="image/png" href="{%static "../static/loginmodule/images/icon.PNG" %}">
+    {% load static %}<link rel="shortcut icon" type="image/png" href="{%static "/loginmodule/images/icon.PNG" %}">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap');  
   @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
@@ -573,24 +573,28 @@
         <a href="/Travel_Buddy/logout">Logout</a>
         {% endif %}
         {% if request.user.is_superuser %}
-        <a href="Admin.html" id="admin" target="_blank">Admin Console</a>
+        <a href="/admin/" id="admin" target="_blank">Admin Console</a>
         {% endif %}
         
+        {% if request.user.is_authenticated %} 
         
+        {% else %}       
         <div class="message arrow-top">This Console is designed for Admin, Security and Embassy use.<br> Don't use it if you're not an admin.</div>
         <a href="/SignupApp/signup/">Sign Up</a>
         <a href="/Travel_Buddy/login">Sign In</a>
-        
+        {% endif %}
     </div>
     <div class="navbar">
-        <div class="a1">{%load static%}<image src="{%static "../static/Travel_Buddy/images/travellogo.png" %}"  class="navimage" alt="Website Logo"></image></div>
+        <div class="a1">{%load static%}<image src="{%static "/Travel_Buddy/images/travellogo.png" %}"  class="navimage" alt="Website Logo"></image></div>
         {% if request.user.is_authenticated %}
-            <a href="#" class="avatar"><img src="{%static "../static/loginmodule/images/user.jpg" %}" alt="Document Protection icon"></a>  <!--Put Image Here-->
+            <a href="/Travel_Buddy/profile/" class="avatar"><img src="{{ request.user.tmsuser.pic.url }}" alt="Document Protection icon"></a>  <!--Put Image Here-->
         {% endif %}
-        <a href="#">CONTACT US</a>
+        <a href="#">ABOUT US</a>
         <a href="/Travel_Buddy/destinations/">DESTINATIONS</a>
-        <a href="">PLAN A TOUR</a>
+        {% if request.user.is_authenticated %}
+        <a href="/BookTicketApp/book_ticket">PLAN A TOUR</a>
         <a href="/Travel_Buddy/profile/">PROFILE</a>
+        {% endif %}
         <a href="/Travel_Buddy/home/">HOME</a>
     </div>
     
@@ -600,23 +604,23 @@
         <div class="header1">Plan Your First Tour Now</div>
         <a href="Destinations.html" target="_blank"><button>Plan a Tour</button></a>
         <div class="mySlides fade" >
-          {%load static%}<img src="{%static "../static/Travel_Buddy/images/Slideshow/travel1.jpg" %}" style=" width:100% ;height: 40vw" alt="Slideshow image1">
+          <img src="{%static "/Travel_Buddy/images/Slideshow/travel1.jpg" %}" style=" width:100% ;height: 40vw" alt="Slideshow image1">
         </div>
         
         <div class="mySlides fade">
-            {%load static%}<img src="{%static "../static/Travel_Buddy/images/Slideshow/travel2.jpg" %}" style=" width:100% ;height: 40vw" alt="Slideshow image1">
+            <img src="{%static "/Travel_Buddy/images/Slideshow/travel2.jpg" %}" style=" width:100% ;height: 40vw" alt="Slideshow image1">
         </div>
         
         <div class="mySlides fade">
-            {%load static%}<img src="{%static "../static/Travel_Buddy/images/Slideshow/travel3.jpg" %}" style=" width:100% ;height: 40vw" alt="Slideshow image1">
+            <img src="{%static "/Travel_Buddy/images/Slideshow/travel3.jpg" %}" style=" width:100% ;height: 40vw" alt="Slideshow image1">
         </div>
         
         <div class="mySlides fade">
-            {%load static%}<img src="{%static "../static/Travel_Buddy/images/Slideshow/travel4.jpg" %}" style=" width:100% ;height: 40vw" alt="Slideshow image1">
+            <img src="{%static "/Travel_Buddy/images/Slideshow/travel4.jpg" %}" style=" width:100% ;height: 40vw" alt="Slideshow image1">
         </div>
         
         <div class="mySlides fade">
-            {%load static%}<img src="{%static "../static/Travel_Buddy/images/Slideshow/travel5.jpg" %}" style=" width:100% ;height: 40vw" alt="Slideshow image1">
+            <img src="{%static "/Travel_Buddy/images/Slideshow/travel5.jpg" %}" style=" width:100% ;height: 40vw" alt="Slideshow image1">
         </div>
 
     </div>
@@ -628,7 +632,7 @@
         <div class="row">
         
         <div class="column">
-        <a href="/Destinations_info/Paris/">{%load static%}<img src="{%static "../static/Travel_Buddy/images/Places/paris.jpg" %}" alt="Image of the city Paris ">
+        <a href="/Destinations_info/Paris/">{%load static%}<img src="{%static "/Travel_Buddy/images/Places/paris.jpg" %}" alt="Image of the city Paris ">
         <div class="name">Paris,France</div>
         <div class="detail">1.Start the day on the Champs-Élysées
         <br>2.Go to the top of the Eiffel Tower
@@ -641,7 +645,7 @@
         </div>
 
         <div class="column">
-            <a href="/Destinations_info/Toronto/">{%load static%}<img src="{%static "../static/Travel_Buddy/images/Places/toronto.jpg" %}" alt="Image of the city Toronto ">
+            <a href="/Destinations_info/Toronto/">{%load static%}<img src="{%static "/Travel_Buddy/images/Places/toronto.jpg" %}" alt="Image of the city Toronto ">
             <div class="name">Toronto,Canada</div>
             <div class="detail">1.See the View from the CN Tower
             <br>2.Visit the Royal Ontario Museum (ROM)
@@ -654,7 +658,7 @@
         </div>
 
         <div class="column">
-            <a href="#">{%load static%}<img src="{%static "../static/Travel_Buddy/images/Places/losangeles.jpg" %}" alt="Image of the city Los Angeles ">
+            <a href="#">{%load static%}<img src="{%static "/Travel_Buddy/images/Places/losangeles.jpg" %}" alt="Image of the city Los Angeles ">
             <div class="name">Los Angeles,USA</div>
             <div class="detail">1.See the View from the CN Tower
             <br>2.Visit the Royal Ontario Museum (ROM)
@@ -667,7 +671,7 @@
         </div>
 
         <div class="column">
-            <a href="#">{%load static%}<img src="{%static "../static/Travel_Buddy/images/Places/mumbai.jpg" %}" alt="Image of the city Mumbai ">
+            <a href="#">{%load static%}<img src="{%static "/Travel_Buddy/images/Places/mumbai.jpg" %}" alt="Image of the city Mumbai ">
             <div class="name">Mumbai,India</div>
             <div class="detail">1.Gateway of India
             <br>2.Sanjay Gandhi National Park
@@ -680,7 +684,7 @@
         </div>
 
         <div class="column">
-            <a href="#">{%load static%}<img src="{%static "../static/Travel_Buddy/images/Places/tokyo.jpg" %}" alt="Image of the city Tokyo ">
+            <a href="#"><img src="{%static "/Travel_Buddy/images/Places/tokyo.jpg" %}" alt="Image of the city Tokyo ">
             <div class="name">Tokyo,Japan</div>
             <div class="detail">1.Tour to The Imperial Palace
             <br>2.Visit the Sensō-ji Temple
@@ -693,7 +697,7 @@
         </div>
 
         <div class="column">
-            <a href="#">{%load static%}<img src="{%static "../static/Travel_Buddy/images/Places/melbourne.jpg" %}" alt="Image of the city Melbourne ">
+            <a href="#"><img src="{%static "/Travel_Buddy/images/Places/melbourne.jpg" %}" alt="Image of the city Melbourne ">
             <div class="name">Melbourne,Australia</div>
             <div class="detail">1.Federation Square
             <br>2.Royal Botanic Gardens
@@ -717,7 +721,7 @@
             
             <a href="#">
                 <div class="column1">
-                {%load static%}<img src="{%static "../static/Travel_Buddy/images/services/document_protection.jpg" %}" alt="Document Protection icon">
+                <img src="{%static "/Travel_Buddy/images/services/document_protection.jpg" %}" alt="Document Protection icon">
                 <div class="service">Document Scanning & Protection</div>
                 <div class="description">Travel Buddy provides you a platform where you can save 
                     important documents that you need for travelling with security .
@@ -727,7 +731,7 @@
 
             <a href="#">
                 <div class="column1">
-                {%load static%}<img src="{%static "../static/Travel_Buddy/images/services/destination.jpg" %}" alt="Destination icon">
+                <img src="{%static "/Travel_Buddy/images/services/destination.jpg" %}" alt="Destination icon">
                 <div class="service">Recommended Destinations</div>
                 <div class="description">Travel Buddy provides you recommended destinations all over the world with
                     places to visit and much more. 
@@ -737,7 +741,7 @@
 
             <a href="#">  
                 <div class="column1">
-                {%load static%}<img src="{%static "../static/Travel_Buddy/images/services/checklist.png" %}" alt="Checklist icon">
+                <img src="{%static "/Travel_Buddy/images/services/checklist.png" %}" alt="Checklist icon">
                 <div class="service">Rules and Regulations</div>
                 <div class="description">Travel Buddy provides you a platform where you can save 
                     important documents that you need for travelling with security .
@@ -749,7 +753,7 @@
     </div>
 
     <div class="dashboard">
-        {%load static%}<img src="{%static "../static/Travel_Buddy/images/dashboard.gif" %}" width="60%" height="100%" style="margin-left: 20vw;">
+        <img src="{%static "/Travel_Buddy/images/dashboard.gif" %}" width="60%" height="100%" style="margin-left: 20vw;">
     </div>
 {% endblock %}
     <div class="footer">
@@ -777,9 +781,9 @@
 
         <div class="column2">
             <div class="heading">CONTACT</div>
-            <div class="contact">{%load static%}<img src="{%static "../static/Travel_Buddy/images/phone.jpg" %}"><div class="text">99878222</div></div>
-            <div class="mail">{%load static%}<img src="{%static "../static/Travel_Buddy/images/mail.jpg" %}"><div class="text">travelbuddy@gmail.com</div></div>
-            <div class="contact">{%load static%}<img src="{%static "../static/Travel_Buddy/images/location.jpg" %}"><div class="text">Mumbai,In</div></div>
+            <div class="contact"><img src="{%static "/Travel_Buddy/images/phone.jpg" %}"><div class="text">99878222</div></div>
+            <div class="mail"><img src="{%static "/Travel_Buddy/images/mail.jpg" %}"><div class="text">travelbuddy@gmail.com</div></div>
+            <div class="contact"><img src="{%static "/Travel_Buddy/images/location.jpg" %}"><div class="text">Mumbai,In</div></div>
         </div>
     </div>
     <div class="end">© Copyright Reserved with Hypertext-Assasins-HAZS</div>
@@ -805,59 +809,5 @@
 </html>
 
 
-<<<<<<< HEAD
-=======
-<!-- home.html
 
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="{% static '/Travel_Buddy/css/font-awesome.css' %}">
-	<link rel="stylesheet" href="{% static '/Travel_Buddy/css/style.css' %}">
-    <link rel="stylesheet" href="{% static '/Travel_Buddy/css/grid.css' %}">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-	<link href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <div class="navigation">
-            <li><h3 style="color: yellow; ">Travel Management Website</h3></li>
-            <ul class="menu">
 
-                <li ><a href="/Travel_Buddy/home/" style="color: yellow;">Home</a></li>
-                {% if request.user.is_authenticated %}
-                    <li><a href="/Travel_Buddy/logout/" style="color: yellow;">Logout</a></li>
-                    {% if request.session.temp != "abc" %}
-                        <li><a href="/BookTicketApp/booking_history/" style="color: yellow;">Booking History</a> </li>
-                    {% else %}
-                        <li><a href="/BookTicketApp/book_ticket/" style="color: yellow;">Book Tour</a></li>
-                        {% endif %}
-                {% else %}
-                    <li><a href="/Travel_Buddy/aboutus/" style="color: yellow;">About Us</a></li>
-                    <li><a href="/SignupApp/signup/" style="color: yellow;">SignUp</a></li>
-                {% endif %}
-                    
-                     <li><a href="/Travel_Buddy/login/" style="color: yellow;">Login</a></li>
-            </ul>
-                {% if request.user.is_authenticated %}
-                     <br><h1 style="color:red " align="right" style="color: yellow;">Welcome  {{ request.session.full_name }}</h1>
-                {% endif %}
-        </div>
-    </header>
-    
-        <div class="logo1">
-        <u style="color:skyblue"><h1 style="color:yellow" align="center">INFORMATION ABOUT PACKAGES</h1></u>
-            <br>
-            <table border="1" style="color: yellow; background-color: green; opacity: 70%;" align="center">
-                <tr><th>Package Name</th><th>Amount</th></tr>
-                {% for pack in packs %}
-                    <tr><td>{{ pack.pname }}</td><td>{{ pack.amount }}</td></tr>
-                {% endfor %}
-            </table>
-        </div>
-        <a href="/BookTicketApp/book_ticket/"><u style="color:seashell"><h1 style="color:Yellow" align="center">Book tour</h1></u></a>
- 
-</body>
-</html> -->
->>>>>>> a5b1a58c0cacb65bf01e8d19a285f6bafd17a745

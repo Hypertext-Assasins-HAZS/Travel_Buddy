@@ -8,9 +8,8 @@ from django.urls import path
 urlpatterns=[
     path('home/',home),
     path('index/',index),
-    path('login/',login),
-    path('logout/',logout),
-    path('auth/',auth_view),
+    path('login/',user_login),
+    path('logout/',user_logout),
     path('destinations/',destinations),
     path('profile/',profile),
     path('package_detail/',package_detail),

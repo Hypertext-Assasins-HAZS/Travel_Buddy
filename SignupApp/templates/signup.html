@@ -25,16 +25,17 @@
 			<h1>Signup Form</h1>
 			<h3>Please Fill out the below form to Register youself as a travelBuddy user</h3>
 			<br>
-			<form action="/SignupApp/signup/" method="POST">
+			<form action="/SignupApp/signup/" method="POST" enctype="multipart/form">
 				{% csrf_token %}
 				{{ user_form|crispy }}
 				{{ tmsUser_form|crispy }}
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<br>
+				<input type="submit" class="btn btn-primary" value="Submit Details"></input>
 			</form>
 		</div>
 	</div>
 	<div class="col" style="margin-top:10em;">
-		<img id="signup-img" src="{%static "../static/SignupApp/images/signupimg.png" %}" alt="">
+		<img id="signup-img" src="{%static "/SignupApp/images/signupimg.png" %}" alt="">
 	</div>
 </div>
 
@@ -44,7 +45,7 @@
 {% endblock %}
 </div>
 
-
+/
 <!-- <div class="wrapper">
 			<h2>SignUp</h2>
 			<div class="w3ls-form" style>

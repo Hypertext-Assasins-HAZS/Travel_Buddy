@@ -1,35 +1,97 @@
-{% extends 'bootstrap.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap');
 
-{% block content %}
-
-<style>
-  .card {
-    width:400px;
-    margin: 20px;
-    background-color: lightblue;
-    
+    .card {
+    float: left;
+    font-family: 'teko';
+    width:30%;
+    height: 43vw;
+    margin:1.5%;
+    background-image:url('{% static "/Travel_Buddy/images/card.jpg" %}') ;
     font-size:larger;
-
+    border-radius: 20px;
+    box-shadow: black 0px 0px 15px;
   }
-</style>
 
-<div class="row"></div>
+  .card-img-bottom
+{
+  margin-top: 3%;
+  border-radius: 0px 0px 20px 20px;
+  width: 100%;
+  height: 18.4vw;
+}
 
-{% for doc in docs %}
-<div class="col-md-4">
-  <div class="card" >
-    <div class="card-body">
-      <h4 class="card-title">Type of document : {{ doc.docType }}</h4>
-      <p class="card-text">Exp of document : {{ doc.expDate}}</p>
-      <p class="card-text">Verification Status: {{ doc.verified}}</p>
-      <a href="{{ doc.docImg.url }}" class="btn btn-primary">See Document</a>
+.card-title
+{
+  
+  font-size: 2.5vw;
+  margin-left: 7%;
+}
+
+.card-text
+{
+  font-size: 2.5vw;
+  margin-left: 7%;
+}
+
+button
+{
+  width: 25%;
+  height: 3vw;
+  font-family: 'teko';
+  font-size: 2vw;
+  margin-left: 7%;
+  margin-bottom: 3%;
+  border: none;
+  border-radius: 50px;
+  background-color:#4285F4;
+  color: white;
+}
+
+.back-button{
+  width: 25%;
+  height: 3vw;
+  font-family: 'teko';
+  font-size: 2vw;
+  margin-left: 7%;
+  margin-bottom: 3%;
+  border: none;
+  border-radius: 50px;
+  background-color: crimson;
+  color: white;
+}
+
+
+  </style>
+</head>
+<body>
+    {% for doc in docs %}
+      <div class="card" >
+        <div class="card-body">
+          <h4 class="card-title">Type of document : {{ doc.docType }}</h4>
+          <p class="card-text">Exp of document : {{ doc.expDate}}
+            <br>
+            Verification Status: {{ doc.verified}}
+          </p>
+          <a href="{{ doc.docImg.url }}"><button>View</button></a>
+        </div>
+        <embed class="card-img-bottom" src="{{ doc.docImg.url }}" alt="Card image">
+      </div>
     </div>
-    <img class="card-img-bottom" src="{{ doc.docImg.url }}" alt="Card image" style="width:100%">
-  </div>
-</div>
+    {% endfor %}
 
-{% endfor %}
-</div>
+    <a href="/Travel_Buddy/profile/"><button class=back-button>Back to Profile</button></a>
+
+</body>
+</html>
 
 
-{% endblock %}
