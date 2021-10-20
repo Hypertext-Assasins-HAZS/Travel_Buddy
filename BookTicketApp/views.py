@@ -10,6 +10,8 @@ from django.contrib.auth.models import User
 from django.contrib.sessions.models import Session
 from django.utils.crypto import get_random_string
 from django.utils.timezone import datetime
+
+
 @login_required
 def book_ticket(request):
 	c={}
@@ -19,6 +21,8 @@ def book_ticket(request):
 	c['packs'] = PackageDetails.objects.all()
 	c['randomid']=get_random_string(length=6)
 	return render(request,'book_ticket.html',c)
+
+
 @login_required
 def bookingdataadd(request):
 	bookingid=request.POST.get('bookingid','')
@@ -44,6 +48,8 @@ def bookingdataadd(request):
 	else:
 		request.session['error3']="Source and Destination can't be same"
 		return HttpResponseRedirect('/BookTicketApp/book_ticket/')
+
+
 @login_required
 def booking_history(request):
 	request.session['temp']="abc"
@@ -51,12 +57,17 @@ def booking_history(request):
 	c['today']=datetime.today().date()
 	c['bookings'] = TMSBooking.objects.filter(tmsuser=request.user.tmsuser)
 	return render(request,'booking_history.html',c)
+
 def delete(request):
 	TMSBooking.objects.filter(booking_id=request.POST.get('cancel')).delete()
 	return HttpResponseRedirect('/BookTicketApp/booking_history/')
+
+
 @login_required
 def feedback(request):
 	return render(request,'feedback.html')
+
+
 def addfeedback(request):
 	feedback=request.POST.get('feedback','')
 	f=feedback(tmsuser=TMSUser.objects.get(user=request.user),feedback=feedback)

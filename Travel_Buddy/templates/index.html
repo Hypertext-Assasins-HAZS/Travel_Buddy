@@ -1,0 +1,114 @@
+<html>  
+<head>
+    <title>Travel Buddy</title>
+    <link rel="shortcut icon" type="image/png" href="Images/icon.PNG">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+        div
+        {
+            position: absolute;
+            top: 30%;
+            left:20%;
+            font-size:3vw;
+          font-size: 6vw;
+          font-family: "lobster";
+        }
+
+        p
+        {
+            color: white;
+        }
+
+        .circle1
+        {
+            position: absolute;
+            width: 4%;
+            height: 4vw;
+            background-color: rgb(67, 161, 250);
+            border-radius: 100%;
+            left: 40%;
+            top: 50%;
+            animation: flow 3s ease-in infinite;
+        }
+
+        .circle2
+        {
+            position: absolute;
+            width: 4%;
+            height: 4vw;
+            background-color: rgb(67, 161, 250);
+            border-radius: 100%;
+            left: 45%;
+            top: 50%;
+            animation: flow 3s ease-in 0.3s infinite;
+        }
+
+        .circle3
+        {
+            position: absolute;
+            width: 4%;
+            height: 4vw;
+            background-color: rgb(67, 161, 250);
+            border-radius: 100%;
+            left: 50%;
+            top: 50%;
+            animation: flow 3s ease-in 0.6s infinite;
+        }
+
+        .circle4
+        {
+            position: absolute;
+            width: 4%;
+            height: 4vw;
+            background-color: rgb(67, 161, 250);
+            border-radius: 100%;
+            left: 55%;
+            top: 50%;
+            animation: flow 3s ease-in 0.9s infinite;
+        }
+
+        @keyframes flow {
+            25%
+            {
+                transform: translateY(0vw);
+            }
+            50%
+            {
+                
+                background-color: white;
+            }
+            75%
+            {
+               
+                background-color: white;
+            }
+            100%
+            {
+                transform: translateY(0vw);
+            }
+            
+            
+        }
+
+     </style> 
+</head>
+<body>
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <div class="circle4"></div>
+    <br>
+    <div>Welcome to Travel Buddy</div>
+    <p id="counter">6</p>
+    <script>
+        setInterval(function() {
+            var div = document.querySelector("#counter");
+            var count = div.textContent * 1 - 1;
+            div.textContent = count;
+            if (count <= 0) {
+                window.location.replace("/Travel_Buddy/home/");
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

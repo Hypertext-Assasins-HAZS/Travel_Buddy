@@ -1,12 +1,12 @@
 {% extends 'bootstrap.html' %}
-
+{% load static %}
 {% block content %}
 {% load crispy_forms_tags %}
 <style>
     .jumbotron{
         width:53%;
         margin:50px;
-        background-color:blanchedalmond;
+        background-image:url('{% static "/Travel_Buddy/images/card.jpg" %}') ;
         padding:20px;
         border-radius: 10px;
     }
@@ -17,6 +17,7 @@
         padding:10px;
         margin:10px;
     }
+   
 </style>
 
 <div class="jumbotron">

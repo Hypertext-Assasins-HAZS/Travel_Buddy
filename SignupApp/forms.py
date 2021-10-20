@@ -29,7 +29,7 @@ class TMSUserForm(forms.ModelForm):
     
     class Meta:
         model = TMSUser
-        fields = ['mobileno','pic','dob']
+        fields = ['mobileno','gender','nationality','pic','dob']
         widgets = {
             'dob' : DateInput
         }
