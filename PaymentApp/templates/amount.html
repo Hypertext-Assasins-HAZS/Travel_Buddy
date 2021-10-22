@@ -2,7 +2,7 @@
 
 {% extends 'home.html' %}
 {% block content %}
-    <label> <h1 style="color: red" align="center">You Have to Pay {{ request.session.total_amount }}</h1></label>
+    <label> <h1 style="color:crimson" align="center">Your total amount is {{ request.session.total_amount }}</h1></label>
 		<div class="wrapper">
 			<h2>Payment Mode Selection</h2>
 			<div class="w3ls-form">

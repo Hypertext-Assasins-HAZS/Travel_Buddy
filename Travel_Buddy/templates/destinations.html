@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+{% load filters %}
 <head>
     <link rel="shortcut icon" type="image/png" href="Images/icon.PNG">
     <title>Plan_a_Tour/Select_Destinations</title>
@@ -128,7 +128,7 @@
 
         .card {
             width: 100%;
-            height: 90%;
+            height: 80%;
         }
 
         .column {
@@ -159,106 +159,7 @@
             box-shadow: rgb(7, 164, 255) 0px 0px 23px;
         }
 
-        .footer {
-            width: 100%;
-            height: 25vw;
-            background-color: #262e3d;
-        }
-
-        .footer .column2 {
-
-            float: left;
-            top: 1vw;
-            width: 23%;
-            height: 20vw;
-            margin-left: 1vw;
-            margin-right: 0.7vw;
-            margin-top: 1vw;
-            z-index: 1;
-        }
-
-        .column2 .heading1 {
-            color: white;
-            position: relative;
-            font-family: "Teko";
-            font-size: 2.5vw;
-            margin-left: 0.9vw;
-            margin-top: 1.5vw;
-        }
-
-
-        .column2 .description {
-            color: white;
-            font-family: "Teko";
-            font-size: 1.9vw;
-            margin-left: 0.9vw;
-            margin-right: 3.7vw;
-            margin-top: 1.5vw;
-        }
-
-        .column2 .link1 {
-            color: white;
-            font-family: "Teko";
-            font-size: 1.9vw;
-            margin-left: 0.9vw;
-            margin-top: 1.5vw;
-        }
-
-
-        .column2 .links {
-            color: white;
-            font-family: "Teko";
-            font-size: 1.9vw;
-            margin-left: 0.9vw;
-            margin-top: 0.5vw;
-        }
-
-        .link1:hover,
-        .links:hover {
-            color: #57a7e9;
-        }
-
-        .column2 .contact {
-            margin-top: 1.5vw;
-            height: 11%;
-            width: 50%;
-        }
-
-        .column2 .mail {
-            margin-top: 1.5vw;
-            height: 11%;
-            width: 90%;
-        }
-
-        .contact img {
-            height: 3vw;
-            width: 3vw;
-            border-radius: 10vw;
-            float: left;
-        }
-
-        .contact .text {
-            margin-left: 1vw;
-            color: white;
-            font-family: "Teko";
-            font-size: 2vw;
-            float: right;
-        }
-
-        .mail img {
-            height: 3vw;
-            width: 3vw;
-            border-radius: 10vw;
-            float: left;
-        }
-
-        .mail .text {
-            margin-left: 3vw;
-            color: white;
-            font-family: "Teko";
-            font-size: 2vw;
-            float: left;
-        }
+        
 
         .end {
             width: 100%;
@@ -332,11 +233,12 @@
         {% endif %}
     </div>
     <div class="navbar">
-        <div class="a1">{%load static%}<image src="{%static "/Travel_Buddy/images/travellogo.png" %}" class="navimage"
+        <div class="a1">{%load static%}<image src="{%static " /Travel_Buddy/images/travellogo.png" %}" class="navimage"
                 alt="Website Logo"></image>
         </div>
         {% if request.user.is_authenticated %}
-        <a href="/Travel_Buddy/profile/" class="avatar"><img src="{{ request.user.tmsuser.pic.url }}" alt="Document Protection icon"></a>
+        <a href="/Travel_Buddy/profile/" class="avatar"><img src="{{ request.user.tmsuser.pic.url }}"
+                alt="Document Protection icon"></a>
         <!--Put Image Here-->
         {% endif %}
         <a href="#">ABOUT US</a>
@@ -360,88 +262,52 @@
         </a>
 
         <div class="column">
-            <img src="{%static "/Travel_Buddy/images/Places/toronto.jpg" %}"
-                alt="Image of the city Toronto ">
+            <img src="{%static "/Travel_Buddy/images/Places/toronto.jpg" %}" alt="Image of the city Toronto ">
             <h1>Toronto</h1>
             <div class="info"><i class="fas fa-map-marker-alt"></i><b>Canada</b></div>
         </div>
 
         <div class="column">
-            <img src="{%static "/Travel_Buddy/images/Places/losangeles.jpg" %}"
-                alt="Image of the city Los Angeles ">
+            <img src="{%static "/Travel_Buddy/images/Places/losangeles.jpg" %}" alt="Image of the city Los Angeles ">
             <h1>Los Angeles</h1>
             <div class="info"><i class="fas fa-map-marker-alt"></i><b>United States of America</b></div>
         </div>
 
         <div class="column">
-            <img src="{%static "/Travel_Buddy/images/Places/mumbai.jpg" %}"
-                alt="Image of the city Mumbai ">
+            <img src="{%static "/Travel_Buddy/images/Places/mumbai.jpg" %}" alt="Image of the city Mumbai ">
             <h1>Mumbai</h1>
             <div class="info"><i class="fas fa-map-marker-alt"></i><b>India</b></div>
         </div>
 
         <div class="column">
-            <img src="{%static "/Travel_Buddy/images/Places/tokyo.jpg" %}"
-                alt="Image of the city Tokyo ">
+            <img src="{%static "/Travel_Buddy/images/Places/tokyo.jpg" %}" alt="Image of the city Tokyo ">
             <h1>Tokyo</h1>
             <div class="info"><i class="fas fa-map-marker-alt"></i><b>Japan</b></div>
         </div>
 
         <div class="column">
-            <img src="{%static "/Travel_Buddy/images/Places/melbourne.jpg" %}"
-                alt="Image of the city Melbourne ">
+            <img src="{%static "/Travel_Buddy/images/Places/melbourne.jpg" %}" alt="Image of the city Melbourne ">
             <h1>Melbourne</h1>
             <div class="info"><i class="fas fa-map-marker-alt"></i><b>Australia</b></div>
         </div>
+        <!-- ################################################################################ -->
+        <!-- dynamic destination -->
+        <!-- ################################################################################ -->
+        
+        {% for destination in destinations %}
+        <div class="column">
+            <img src="{{ destination.pic.url }}" alt="Image of the city">
+            <h1>{{ destination.pdestination }}</h1>
+            <div class="info"><i class="fas fa-map-marker-alt"></i><b>{{ countryname|country_name:destination.pCountry }}</b></div>
+        </div>
+
+        {% endfor %}
+
+
+
     </div>
 
-    <div class="footer">
-        <div class="column2">
-            <div class="heading1">ABOUT</div>
-            <div class="description">Travel Buddy is a travel website which manages all your travelling data including
-                your Flight details,
-                Hotel details and much more ... </div>
-        </div>
-
-        <div class="column2">
-            <div class="heading1">LINKS</div>
-            <a href="#" style="text-decoration: none;">
-                <div class="link1">Help Center</div>
-            </a>
-            <a href="/Travel_Buddy/destinations/" style="text-decoration: none;">
-                <div class="links">Destinations</div>
-            </a>
-            <a href="/Travel_Buddy/package_detail/" style="text-decoration: none;">
-                <div class="links">Package Details</div>
-            </a>
-            <a href="#" style="text-decoration: none;">
-                <div class="links">Privacy Policy</div>
-            </a>
-            <a href="#" style="text-decoration: none;">
-                <div class="links">View Rules</div>
-            </a>
-        </div>
-
-        <div class="column2">
-            <div class="heading1">INFO</div>
-            <div class="description">This website was made my the Hypertext-Assasins-HAZS Group
-                in order to provide all in one platform to the users and ease of usage
-            </div>
-        </div>
-
-        <div class="column2">
-            <div class="heading1">CONTACT</div>
-            <div class="contact"><img src="{%static "/Travel_Buddy/images/phone.jpg" %}">
-                <div class="text">99878222</div>
-            </div>
-            <div class="mail"><img src="{%static "/Travel_Buddy/images/mail.jpg" %}">
-                <div class="text">travelbuddy@gmail.com</div>
-            </div>
-            <div class="contact"><img src="{%static "/Travel_Buddy/images/location.jpg" %}">
-                <div class="text">Mumbai,In</div>
-            </div>
-        </div>
-    </div>
+    
     <div class="end">© Copyright Reserved with Hypertext-Assasins-HAZS</div>
 </body>
 

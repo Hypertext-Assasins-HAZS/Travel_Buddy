@@ -4,6 +4,7 @@ from django.db import models
 from SignupApp.models import TMSUser
 from django.contrib.auth.models import User
 from django.utils import timezone
+from SignupApp.models import countries
 
 
 class PackageDetails(models.Model):
@@ -13,6 +14,8 @@ class PackageDetails(models.Model):
         ('luxury','Luxury'), 
 	] 
 	pname = models.CharField(max_length=20,primary_key=True)
+	pdestination = models.CharField(max_length=20,default="no location given")
+	pCountry = models.CharField( blank=True, null=True,default='N.A.', max_length=4,choices=countries())
 	pdetails = models.TextField(blank=True,max_length=200,default='no package details provided !')
 	pic = models.ImageField(default='pdefault.jpg',upload_to='package_pics')
 	amount = models.CharField(default='1000',max_length=5)

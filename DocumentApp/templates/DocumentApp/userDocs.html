@@ -133,38 +133,34 @@ i
   </style>
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand">
-          <i class="fas fa-chalkboard-teacher"></i>
-          User Dashboard
-        </a>
-        <a style="float:right; margin-left:68%;" class="navbar-brand" href="/Travel_Buddy/home/">
-          <i class="fas fa-home"></i>
-          Home
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  <nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" >
+        <i class="fas fa-chalkboard-teacher"></i>
+        User Dashboard
+      </a>
+      <a style="float:right; margin-left:73%;" class="navbar-brand" href="/Travel_Buddy/home/">
+        <i class="fas fa-home"></i>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><b style="font-size: 2vw;">Welcome to Travel Buddy</b></h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body" style="background-color: black;">
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><b style="font-size: 2vw;">Welcome {{request.user.first_name|title}}</b></h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" style="background-color: black;">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a class="nav-link" href="/Travel_Buddy/home/" style="font-size: 2vw;">Home</a>
+                  <a class="nav-link"  href="/Travel_Buddy/home/"  style="font-size: 2vw;"><i class="fas fa-home" style="font-size: 2vw;"></i></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/Travel_Buddy/profile/" style="font-size: 2vw;">Profile</a>
+                <a class="nav-link active" aria-current="page" href="/Travel_Buddy/profile/"  style="font-size: 2vw;">Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/DocumentApp/userDocs/"  style="font-size: 2vw;">Documents</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/DocumentApp/docAdd/" style="font-size: 2vw;">Add Document</a>
+                  <a class="nav-link" href="/DocumentApp/userDocs/" style="font-size: 2vw;">Documents</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#" style="font-size: 2vw;">Tours</a>
@@ -175,13 +171,22 @@ i
             </ul>
             <br>
           </div>
-        </div>
       </div>
-    </nav>
+    </div>
+  </nav>
 
   <div class="head">
+    
     <a href="/DocumentApp/docAdd/"><button class="add"><i class="fas fa-plus-circle" style="float: left;margin-top: 2%;margin-left: 5%;margin-right: 0%;"></i>Add Documents</button></a>
+    {% if numberOfDocs == 0  %}
     <h2><b><i class="fas fa-exclamation-circle" style="font-size: 2vw;"></i>No Documents found ! ... Kindly Add your documents</b></h2>
+    {% else %}
+      {% if numberOfDocs == 1  %}
+      <h2 style="color: black">1 Document found</h2>
+      {% else %}
+      <h2 style="color: black">{{ numberOfDocs }} Documents found</h2>
+      {% endif %}
+    {% endif %}
   </div>
 
     {% for doc in docs %}
@@ -199,9 +204,14 @@ i
             
           </h4>
           <embed class="card-img-bottom" src="{{ doc.docImg.url }}" alt="Card image">
-          <p class="card-text">Expiry date : {{ doc.expDate}}
+            
+            <p class="card-text">Expiry date : {{ doc.expDate}}
             <br>
-            Verification Status: {{ doc.verified}}
+            {% if doc.verified %}
+            <div style="color:green">Verification Status: {{ doc.verified}}</div> 
+            {% else %}
+            <div style="color:crimson">Verification Status: {{ doc.verified}}</div> 
+            {% endif %}
           </p>
           <a href="{{ doc.docImg.url }}"><button class="button">View</button></a>
         </div>

@@ -83,14 +83,7 @@
 </head>
 <div class="jumbotron">
     
-    
-   
-    {% if success %}
-        <h1>{{ success }}</h1>
-        <a href="/DocumentApp/userDocs/" class="btn btn-success">Go to Home-Page</a>
-        <a href="/DocumentApp/docAdd/" class="btn btn-warning">Add another Document</a>
-    {% else %}
-    <form method="POST" action="#" enctype="multipart/form-data">
+    <form method="POST" action="/DocumentApp/docAdd/" enctype="multipart/form-data">
         <h1>
             Add new document 
             <a href="/Travel_Buddy/profile/" >
@@ -103,7 +96,7 @@
         <br>
         <input type="submit" class="btn btn-primary" value="Submit" style="margin-left: 1%;">
     </form>
-    {% endif %}
+    
 </div>
 
 

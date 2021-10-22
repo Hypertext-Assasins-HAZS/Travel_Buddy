@@ -10,7 +10,7 @@ urlpatterns=[
     path('index/',index),
     path('login/',user_login),
     path('logout/',user_logout),
-    path('destinations/',destinations),
+    path('destinations/',destinationsView),
     path('profile/',profile),
     path('package_detail/',package_detail),
 ]
