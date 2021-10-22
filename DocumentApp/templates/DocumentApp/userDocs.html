@@ -1,22 +1,72 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>My Documents</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" integrity="sha512-u7ppO4TLg4v6EY8yQ6T6d66inT0daGyTodAi6ycbw9+/AU8KMLAF7Z7YGKPMRA96v7t+c7O1s6YCTGkok6p9ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-    .card {
+    *
+{
+  font-family: "Roboto";
+  font-size: 1.5vw;
+  margin: 0%;
+  padding: 0%;
+}
+
+.head
+{
+  margin-top: 5vw;
+  margin-bottom: 2vw;
+  width: 100%;
+  height: 5vw;
+}
+
+.head h2
+{
+  text-align: left;
+  float: right;
+  font-size: 2vw;
+  width: 53%;
+  margin: 2%;
+  color: red;
+}
+
+.head b
+{
+  font-size: 2vw;
+}
+
+.add
+{
+  color:white;
+  width: 14%;
+  height: 3vw;
+  font-size: 1.5vw;
+  margin: 2%;
+  background-color: #1a73e8;
+  border: none;
+  border-radius: 5px;
+}
+
+.add:hover
+{
+  background-color:#0646ac;
+;
+}
+
+ .card {
     float: left;
     font-family: 'teko';
     width:30%;
-    height: 43vw;
+    height: 42vw;
     margin:1.5%;
-    background-image:url('{% static "/Travel_Buddy/images/card.jpg" %}') ;
+    background-color: white;
     font-size:larger;
     border-radius: 20px;
     box-shadow: black 0px 0px 15px;
@@ -25,73 +75,142 @@
   .card-img-bottom
 {
   margin-top: 3%;
-  border-radius: 0px 0px 20px 20px;
+  border-radius:20px;
   width: 100%;
   height: 18.4vw;
 }
 
+.trash
+{
+  float: right;
+  margin-right: 1%;
+  border: none;
+  background-color: transparent;
+}
+
+.trash:hover
+{
+  color: red;
+}
+
 .card-title
 {
-  
-  font-size: 2.5vw;
-  margin-left: 7%;
+  font-size: 2vw;
+  margin-left: 1%;
 }
 
 .card-text
 {
-  font-size: 2.5vw;
-  margin-left: 7%;
+  font-size: 2vw;
+  margin-left: 1%;
 }
 
-button
+i
+{
+  margin: 1%;
+  margin-right: 5%;
+}
+
+.button
 {
   width: 25%;
   height: 3vw;
-  font-family: 'teko';
   font-size: 2vw;
-  margin-left: 7%;
+  margin-left: 1%;
   margin-bottom: 3%;
   border: none;
   border-radius: 50px;
-  background-color:#4285F4;
+  background-color:#1a73e8;
   color: white;
 }
 
-.back-button{
-  width: 25%;
-  height: 3vw;
-  font-family: 'teko';
-  font-size: 2vw;
-  margin-left: 7%;
-  margin-bottom: 3%;
-  border: none;
-  border-radius: 50px;
-  background-color: crimson;
-  color: white;
+.button:hover
+{
+  background-color:#0646ac;
 }
 
 
   </style>
 </head>
 <body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand">
+          <i class="fas fa-chalkboard-teacher"></i>
+          User Dashboard
+        </a>
+        <a style="float:right; margin-left:68%;" class="navbar-brand" href="/Travel_Buddy/home/">
+          <i class="fas fa-home"></i>
+          Home
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><b style="font-size: 2vw;">Welcome to Travel Buddy</b></h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body" style="background-color: black;">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link" href="/Travel_Buddy/home/" style="font-size: 2vw;">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/Travel_Buddy/profile/" style="font-size: 2vw;">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/DocumentApp/userDocs/"  style="font-size: 2vw;">Documents</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/DocumentApp/docAdd/" style="font-size: 2vw;">Add Document</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" style="font-size: 2vw;">Tours</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" style="font-size: 2vw;">Report an issue</a>
+              </li>
+            </ul>
+            <br>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+  <div class="head">
+    <a href="/DocumentApp/docAdd/"><button class="add"><i class="fas fa-plus-circle" style="float: left;margin-top: 2%;margin-left: 5%;margin-right: 0%;"></i>Add Documents</button></a>
+    <h2><b><i class="fas fa-exclamation-circle" style="font-size: 2vw;"></i>No Documents found ! ... Kindly Add your documents</b></h2>
+  </div>
+
     {% for doc in docs %}
       <div class="card" >
         <div class="card-body">
-          <h4 class="card-title">Type of document : {{ doc.docType }}</h4>
-          <p class="card-text">Exp of document : {{ doc.expDate}}
+          <h4 class="card-title"><b style="font-size: 2vw;">Document : {{ doc.docType }}</b>
+            
+            <form action="/DocumentApp/docDelete/" method="POST">
+              {% csrf_token %}
+              <button name="docToBeDeleted" value="{{ doc.docId }}" class="trash"><i class="fas fa-trash"></i></button>
+          </form>
+            
+            
+            
+            
+          </h4>
+          <embed class="card-img-bottom" src="{{ doc.docImg.url }}" alt="Card image">
+          <p class="card-text">Expiry date : {{ doc.expDate}}
             <br>
             Verification Status: {{ doc.verified}}
           </p>
-          <a href="{{ doc.docImg.url }}"><button>View</button></a>
+          <a href="{{ doc.docImg.url }}"><button class="button">View</button></a>
         </div>
-        <embed class="card-img-bottom" src="{{ doc.docImg.url }}" alt="Card image">
       </div>
     </div>
     {% endfor %}
-
-    <a href="/Travel_Buddy/profile/"><button class=back-button>Back to Profile</button></a>
-
 </body>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </html>
 
 

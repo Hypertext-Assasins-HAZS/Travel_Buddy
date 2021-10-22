@@ -13,7 +13,7 @@ class PackageDetails(models.Model):
         ('luxury','Luxury'), 
 	] 
 	pname = models.CharField(max_length=20,primary_key=True)
-	pdetails = models.TextField(max_length=200,default='no package details provided !')
+	pdetails = models.TextField(blank=True,max_length=200,default='no package details provided !')
 	pic = models.ImageField(default='pdefault.jpg',upload_to='package_pics')
 	amount = models.CharField(default='1000',max_length=5)
 	ptype = models.CharField(default='common',max_length=10,choices=TYPES)

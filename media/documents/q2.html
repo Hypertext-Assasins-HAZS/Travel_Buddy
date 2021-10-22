@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <label for="age">Age : </label>
+    <input type="number" name="age" id="age" onchange="onChange(this.value)">
+    <p id="id" style="color: red;">
+    </p>
+
+    <script>
+        function checkage(age){
+            
+        }
+
+
+        try{
+           
+            console.log('In try block');
+            floran("hello")
+        } catch(err){
+            document.getElementById('id').innerHTML = err.name + " : " + err.message
+        }
+
+        try {
+            function onChange(age){
+                if(parseInt(age) < 18){
+                    throw("Age is less than 18")
+                }
+            }
+        } catch (error) {
+            alert(error)
+        }
+    </script>
+</body>
+</html>

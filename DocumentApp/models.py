@@ -19,6 +19,7 @@ DOC_TYPES = [
 class Document(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,)
+    docId = models.AutoField(primary_key=True)
     docType = models.CharField(max_length=45,null=True,choices=DOC_TYPES)
     verified = models.BooleanField(default=False)
     expDate = models.DateField(default=timezone.now)

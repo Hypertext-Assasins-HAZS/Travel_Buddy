@@ -7,5 +7,6 @@ from django.urls import path
 
 urlpatterns = [
     path('docAdd/', DocumentAdd),
-    path('userDocs/', userDocsView)
+    path('userDocs/', userDocsView),
+    path('docDelete/',DocumentDelete),
 ]

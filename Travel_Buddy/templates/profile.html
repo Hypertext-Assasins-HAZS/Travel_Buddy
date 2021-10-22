@@ -11,19 +11,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" integrity="sha512-u7ppO4TLg4v6EY8yQ6T6d66inT0daGyTodAi6ycbw9+/AU8KMLAF7Z7YGKPMRA96v7t+c7O1s6YCTGkok6p9ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap');  
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap');
  
-
      *
     {
-    font-family: "teko";
-    font-size: 1.7vw;
+    font-family: "Roboto";
+    font-size: 1.5vw;
     margin: 0%;
     padding: 0%;
     }
 
     .profile
     {
+        
         margin:3%;
         width: 95%;
         height: 43vw;
@@ -36,10 +37,10 @@
 
     .profile .img1
     {   
-        width: 25%;
-        height:63%;
+        width: 27%;
+        height:69%;
         margin-top: 1%;
-        margin-left: 5%;
+        margin-left: 3%;
         float: left;
         background-color: beige;
         border-radius: 20px;
@@ -71,12 +72,13 @@
 
     .brand .verification
     {
+        
         position: relative;
         float: right;
         height: 5vw;
-        width: 18%;
+        width: 19%;
         z-index: 1;
-        font-size: 3vw;
+        font-size: 2vw;
     }
 
     .i
@@ -87,32 +89,34 @@
         color: green;
         background-color: white;
         border-radius: 100%;
-        font-size: 3vw;
+        font-size: 2vw;
     }
 
     .status
     {
         float: right;
-        font-family: 'teko';
-        margin-top: 5%;
+        font-family: 'Noto Sans Mono', monospace;
+        margin-top: 2.5%;
         margin-right: 5%;
-        font-size: 3vw;
-        font-weight: bold;
+        font-size: 1.8vw;
+        font-weight: bolder;
 
     }
 
 
     .name
     {
+        font-family: 'Noto Sans Mono', monospace;
         width: 67%;
         height: 35%;
         float: left;
-        margin-left: 3%;
+        margin-left: 1%;
         margin-top: 1%;
     }
 
     .name-field
     {
+        font-family: 'Noto Sans Mono', monospace;
         width: 78%;
         height: 12vw;
         color: black;
@@ -123,29 +127,39 @@
     
     .name-field .h1
     {
+        
         float: left;
         margin: 1%;
         font-size:5vw;
-        font-weight: bolder;
         width: 100%;
         font-family: 'Teko';
     }
 
+    .h1-name h1{
+        font-family: 'Noto Sans Mono', monospace;
+        float: left;
+        margin: 1%;
+        font-size:4.5vw;
+        width: 100%;
+        font-weight: bolder;
+
+    }
+
     .name-field p
     {
+        font-family: 'Noto Sans Mono', monospace;
         float: left;
         margin: 1%;
         font-size: 2.5vw;
-        font-family: 'Teko';
+        font-weight: bolder;
     }
 
     .container1
     {
         float: left;
-        width:60%;
-        height:25%;
-        margin: 1%;
-        margin-left: 3%;
+        width:67%;
+        height:37%;
+        margin-left: 1%;
     }
 
     .field
@@ -159,23 +173,21 @@
 
     .field h1
     {
+        font-family: 'Noto Sans Mono', monospace;
         float: left;
-        margin: 1%;
-        font-size: 2.5vw;
-        font-family: 'Teko';
-        font-weight: bold;
+        margin: 0.6%;
+        font-size: 1.7vw;
+        font-weight: bolder;
     }
 
     .field p
     {
+        font-family: 'Noto Sans Mono', monospace;
         float: left;
-        font-size: 2.5vw;
-        font-family: 'Teko';
+        font-size: 1.7vw;
+        font-weight: bolder;
     }
-    .username{
-        font-weight: bold;
-        color: crimson;
-    }
+    
     
 </style>
 <body>
@@ -185,14 +197,17 @@
             <i class="fas fa-chalkboard-teacher"></i>
             User Dashboard
           </a>
-          
+          <a style="float:right; margin-left:68%;" class="navbar-brand" href="/Travel_Buddy/home/">
+            <i class="fas fa-home"></i>
+            Home
+          </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
           </button>
   
           <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><b style="font-size: 2.5vw;">Welcome to Travel Buddy</b></h5>
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><b style="font-size: 2vw;">Welcome to Travel Buddy</b></h5>
               <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body" style="background-color: black;">
@@ -238,18 +253,16 @@
         <img class="img1" src="{{request.user.tmsuser.pic.url}}" alt="Your Picture">
         <div class="name">
             <div class="name-field">
-                <div class="h1"><h1>{{request.user.first_name|upper}} {{request.user.last_name|upper}}</h1>
-                    <p class="username">Username : {{request.user.username}}</p>
-                </div>
-                
+                <div class="h1-name"><h1>{{request.user.first_name|upper}} {{request.user.last_name|upper}}</h1></div>
+                <p style="color:crimson">username : <em style="font-size: 2.5vw;">{{request.user.username}}</em></p>
             </div>
         </div>
 
 
         <div class="container1">
         <div class="field">
-            <h1>Nationality :</h1>
-            <p>{{ country }}</p>
+            <h1>Email :</h1>
+            <p>{{request.user.email}}</p>
         </div>
         
         <div class="field">
@@ -258,11 +271,17 @@
         </div>
         
         <div class="field">
-            <h1>Last Login :</h1>
-            <p>{{request.user.last_login}}</p>
+            <h1>Nationality :</h1>
+            <p>{{ country }}</p>
         </div>
-        
+
         <div class="field">
+            <h1>Contact :</h1>
+            <p>{{ request.user.tmsuser.mobileno }}</p>
+        </div>
+
+        
+        <div class="field" style="width: 70%;">
             <h1>Date Joined :</h1>
             <p>{{request.user.date_joined}}</p>
         </div>

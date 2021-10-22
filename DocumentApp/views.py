@@ -1,7 +1,9 @@
 from django.http.response import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .forms import DocumentForm
+from .models import Document
 
 # Create your views here.
 @login_required
@@ -20,10 +22,14 @@ def DocumentAdd(request):
     return render(request, 'DocumentApp/docAdd.html', {'form' : form})
 
 @login_required
+def DocumentDelete(request):
+    docs = request.user.document_set.all()
+    Document.objects.filter(docId=request.POST.get('docToBeDeleted')).delete()
+    return render(request, 'DocumentApp/userDocs.html',{'docs':docs})
+
+
+
+@login_required
 def userDocsView(request):
     docs = request.user.document_set.all()
-    for i in docs:
-        print(i.docImg)
-        print(i.docType)
-        print(i.expDate)
     return render(request, 'DocumentApp/userDocs.html',{'docs':docs})
