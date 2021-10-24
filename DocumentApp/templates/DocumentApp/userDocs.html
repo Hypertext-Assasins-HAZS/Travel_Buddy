@@ -181,7 +181,7 @@ i
 
   <div class="head">
     
-    <a href="/DocumentApp/docAdd/"><button class="add"><i class="fas fa-plus-circle" style="float: left;margin-top: 2%;margin-left: 5%;margin-right: 0%;"></i>Add Documents</button></a>
+    <a href="/DocumentApp/DocAddPage/"><button class="add"><i class="fas fa-plus-circle" style="float: left;margin-top: 2%;margin-left: 5%;margin-right: 0%;"></i>Add Documents</button></a>
     {% if numberOfDocs == 0  %}
     <h2><b><i class="fas fa-exclamation-circle" style="font-size: 2vw;"></i>No Documents found ! ... Kindly Add your documents</b></h2>
     {% else %}
@@ -198,9 +198,9 @@ i
         <div class="card-body">
           <h4 class="card-title"><b style="font-size: 2vw;">Document : {{ doc.docType }}</b>
             
-            <form action="/DocumentApp/docDelete/" method="POST">
+            <form id="deleteform" method="POST">
               {% csrf_token %}
-              <button name="docToBeDeleted" value="{{ doc.docId }}" class="trash"><i class="fas fa-trash"></i></button>
+              <button name="docToBeDeleted" value="{{ doc.docId }}" class="trash" onclick=myFunction()><i class="fas fa-trash"></i></button>
           </form>
             
             
@@ -225,6 +225,18 @@ i
 </body>
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script>
+  function myFunction() {
+    var txt;
+    if (confirm(" Are you sure you want to delete this document !!!!  ")) {
+      var form = document.getElementById("deleteform").setAttribute("action","/DocumentApp/docDelete/");
+      
+    } else {
+      txt = "You pressed Cancel!";
+    }
+    
+  }
+  </script>
 </html>
 
 

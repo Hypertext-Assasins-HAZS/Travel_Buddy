@@ -1,0 +1,150 @@
+<!-- signup.html -->
+
+{% extends 'bootstrap.html' %}
+{% load static %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" integrity="sha512-u7ppO4TLg4v6EY8yQ6T6d66inT0daGyTodAi6ycbw9+/AU8KMLAF7Z7YGKPMRA96v7t+c7O1s6YCTGkok6p9ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); 
+	*
+	{
+		font-family: "Roboto";
+		font-size: 2vw;
+	}
+
+	i
+	{
+		margin-bottom: 7%;
+		font-size: 2vw;
+	}
+
+	body
+	{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.container ,.p-5,.my-5,.border
+	{
+		width:60%;
+		display: flexbox;
+		align-content: center;
+		justify-content: center;
+	}
+
+	.form-group {
+		width: 75%;
+		padding-top: 1em;
+	}
+
+	label
+	{
+		margin-bottom: 3%;
+		margin-top: 3%;
+	}
+
+	div
+	{
+		width: 130%;
+	}
+	
+	@keyframes 
+        animate 
+        {
+
+            0%
+            {
+                background-color: crimson;
+            }
+            20%
+            {
+                background-color: cyan;
+            }
+            40%
+            {
+                background-color: orange;
+            }
+            60%
+            {
+                background-color: orangered;
+            }
+            80%
+            {
+                background-color: greenyellow;
+            }
+            100%{
+                background-color:red;
+            }
+        }
+		body
+        {
+            padding: 0;
+            margin: 0;
+            font-family: "Teko";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: animate 20s infinite;
+        }
+</style>
+<div class="row">
+	<div class="col">
+		<div class="container p-5 my-5 border" style="border-top: 5px solid; background-color: whitesmoke; border-radius: 20px;">
+			<a href="/Travel_Buddy/home/"><i class="fas fa-arrow-circle-left"></i></a>
+			<h1>User Update Form</h1>
+			<br>
+			<h3>Please fill out the below form to update your profile.</h3>
+			<h1 style="color:green;">{{success}}</h1>
+			<br>
+			<form action="/SignupApp/userUpdate/" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ user_update_form|crispy }}
+				{{ tmsUser_update_form|crispy }}
+				<br>
+				<input type="submit" class="btn btn-primary" value="Submit Details"></input>
+			</form>
+			
+		</div>
+	</div>
+</div>
+
+
+
+
+{% endblock %}
+</div>
+
+/
+<!-- <div class="wrapper">
+			<h2>SignUp</h2>
+			<div class="w3ls-form" style>
+				<form action="/SignupApp/adduserinfo/" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+					<label>Username</label>
+					<input type="text" name="username" placeholder="Username" required/>
+					<p style="color:Red">{{error5}}</p>
+					<label>Password</label>
+					<input type="password" name="password" placeholder="Enter Password(atleast 8 char)" required />
+                    <p style="color:Red">{{error1}}</p>
+                    <label>Confirm Password</label>
+					<input type="password" name="cpassword" placeholder="Reenter Password" required />
+                    <p style="color:Red">{{error2}}</p>
+                    <label>Email Id</label>
+					<input type="email" name="emailid" placeholder="Email" required />
+					<p style="color:Red">{{error4}}</p>
+                    <label>Mobile No</label>
+					<input type="text" name="mobileno" placeholder="Mobile Number" required maxlength="10"/>
+					<p style="color:Red">{{error3}}</p>
+					
+					<br>
+					<input type="file" id="avatar" name="profile_pic" accept="image/png, image/jpeg">
+                    <input type="submit" value="SignUp" />
+				    <a href="/loginmodule/login/" class="pass">Already have an account?Login</a>
+				</form>
+            </div>
+        </div>
+		<br>-->

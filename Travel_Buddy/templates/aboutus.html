@@ -1,6 +1,50 @@
 <!-- aboutus.html -->
+{% extends 'home.html' %}
 
-    <center>
-    <p style="color:black">Travel Management is the function of managing a company’s strategic approach to travel, the negotiations with all vendors, day-to-day operation of the corporate travel program, traveler safety and security, credit-card management and travel and expenses data management.</p>
-    <p style="color:orangered">Travel buddy is a travel management site</p>
-    </center>
+{% block content %}
+<style>
+    .aboutus {
+        background-color:crimson;
+
+        height: 400px;
+        padding:25px;
+        text-align: center;
+    }
+    .jumbotron{
+        background-color:gold;
+        height:380px;
+        border-radius: 50px;
+        text-align: left;
+        padding: 50px;
+    }
+    ul{
+        font-size: 25px;
+        font-weight: bold;
+        text-align: justify;
+        
+    }
+    
+</style>
+<div class="aboutus">
+    <h1>About Us</h1>
+    <h2>( Team HAZS )</h2>
+    <br>
+    <div class="jumbotron">
+        <h1>What is TravelBuddy?</h1>
+        <h2>TravelBuddy is a Travel Website built to gurantee swift & easy travel by making booking tickets a breeze and keeping your documents handy. </h2>
+        <br>
+        <h1>Creators of TravelBuddy</h1>
+        <br>
+        <ul>
+            <li>Hamza Khalid Baig</li>
+            <li>Dawnak Sufyan Sirajuddin</li>
+            <li>Khan Aaftab Alam</li>
+            <li>Kazi Uzair</li>
+        </ul>
+
+
+    </div>
+
+</div>
+
+{% endblock %}

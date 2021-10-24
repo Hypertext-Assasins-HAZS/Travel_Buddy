@@ -6,9 +6,9 @@ from django.conf.urls import url
 from django.urls import path
 
 urlpatterns=[
-    path('home/',home),
+    path('home/',home,name='home'),
     path('index/',index),
-    path('login/',user_login),
+    path('login/',user_login,name='login'),
     path('logout/',user_logout),
     path('destinations/',destinationsView),
     path('profile/',profile),
