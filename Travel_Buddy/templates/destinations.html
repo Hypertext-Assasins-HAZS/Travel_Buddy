@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+{% load static %}
 {% load filters %}
 <head>
     <link rel="shortcut icon" type="image/png" href="Images/icon.PNG">
@@ -19,7 +20,24 @@
         body {
             height: 150vw;
         }
+        .button
+        {
+        width: 50%;
+        height: 3vw;
+        font-size: 2vw;
+        margin-left: 2%;
+        margin-bottom: 5%;
+        margin-top: 2%;
+        border: none;
+        border-radius: 25px;
+        background-color:#1a73e8;
+        color: white;
+        }
 
+        .button:hover
+        {
+        background-color:#0646ac;
+        }
         .container {
             width: 100%;
             margin: 0%;
@@ -134,7 +152,7 @@
         .column {
             width: 29%;
             margin: 2.1vw;
-            height: 53vw;
+            height: 54vw;
             font-size: 2.7vw;
             text-align: justify;
             float: left;
@@ -233,7 +251,7 @@
         {% endif %}
     </div>
     <div class="navbar">
-        <div class="a1">{%load static%}<image src="{%static " /Travel_Buddy/images/travellogo.png" %}" class="navimage"
+        <div class="a1"><image src="{%static "/Travel_Buddy/images/travellogo.png" %}" class="navimage"
                 alt="Website Logo"></image>
         </div>
         {% if request.user.is_authenticated %}
@@ -241,7 +259,7 @@
                 alt="Document Protection icon"></a>
         <!--Put Image Here-->
         {% endif %}
-        <a href="#">ABOUT US</a>
+        <a href="/Travel_Buddy/aboutus/">ABOUT US</a>
         <a href="/Travel_Buddy/destinations/">DESTINATIONS</a>
         {% if request.user.is_authenticated %}
         <a href="/BookTicketApp/book_ticket">PLAN A TOUR</a>
@@ -253,57 +271,35 @@
     <div class="card">
         <h1 class="heading"><i class="fas fa-map-marker-alt"></i>Select a Destination</h1>
 
-        <a href="Destinations/Paris.html">
-            <div class="column">
-                <img src="{%static "/Travel_Buddy/images/Places/paris.jpg" %}">
-                <h1>Paris</h1>
-                <div class="info"><i class="fas fa-map-marker-alt"></i><b>France</b></div>
-            </div>
-        </a>
-
-        <div class="column">
-            <img src="{%static "/Travel_Buddy/images/Places/toronto.jpg" %}" alt="Image of the city Toronto ">
-            <h1>Toronto</h1>
-            <div class="info"><i class="fas fa-map-marker-alt"></i><b>Canada</b></div>
-        </div>
-
-        <div class="column">
-            <img src="{%static "/Travel_Buddy/images/Places/losangeles.jpg" %}" alt="Image of the city Los Angeles ">
-            <h1>Los Angeles</h1>
-            <div class="info"><i class="fas fa-map-marker-alt"></i><b>United States of America</b></div>
-        </div>
-
-        <div class="column">
-            <img src="{%static "/Travel_Buddy/images/Places/mumbai.jpg" %}" alt="Image of the city Mumbai ">
-            <h1>Mumbai</h1>
-            <div class="info"><i class="fas fa-map-marker-alt"></i><b>India</b></div>
-        </div>
-
-        <div class="column">
-            <img src="{%static "/Travel_Buddy/images/Places/tokyo.jpg" %}" alt="Image of the city Tokyo ">
-            <h1>Tokyo</h1>
-            <div class="info"><i class="fas fa-map-marker-alt"></i><b>Japan</b></div>
-        </div>
-
-        <div class="column">
-            <img src="{%static "/Travel_Buddy/images/Places/melbourne.jpg" %}" alt="Image of the city Melbourne ">
-            <h1>Melbourne</h1>
-            <div class="info"><i class="fas fa-map-marker-alt"></i><b>Australia</b></div>
-        </div>
+        
         <!-- ################################################################################ -->
-        <!-- dynamic destination -->
+        <!-- dynamic destinations -->
         <!-- ################################################################################ -->
         
         {% for destination in destinations %}
-        <div class="column">
-            <img src="{{ destination.pic.url }}" alt="Image of the city">
-            <h1>{{ destination.pdestination }}</h1>
-            <div class="info"><i class="fas fa-map-marker-alt"></i><b>{{ countryname|country_name:destination.pCountry }}</b></div>
-        </div>
+        <a href="/BookTicketApp/book_ticket/">
+            <div class="column">
+                <img src="{{ destination.pic.url }}" alt="Image of the city">
+                <h1>{{ destination.pCity }}</h1>
+                <div class="info"><i class="fas fa-map-marker-alt"></i><b>{{ countryname|country_name:destination.pCountry }}</b></div>
+                <button class="button">Book Tickets</button>
+            </div>
+        </a>
 
         {% endfor %}
 
+        <!-- ################################################################################ -->
+        <!-- static/dummy destinations -->
+        <!-- ################################################################################ -->
+        
+        <!-- <div class="column">
+            <img src="{%static "/Travel_Buddy/images/Places/paris.jpg" %}">
+            <h1>Paris</h1>
+            <div class="info"><i class="fas fa-map-marker-alt"></i><b>France</b></div>
+        </div> -->
+        
 
+       
 
     </div>
 

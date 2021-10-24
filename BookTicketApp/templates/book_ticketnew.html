@@ -1,0 +1,388 @@
+<!-- book_Ticket.html -->
+<!DOCTYPE html>
+{% load filters %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" integrity="sha512-u7ppO4TLg4v6EY8yQ6T6d66inT0daGyTodAi6ycbw9+/AU8KMLAF7Z7YGKPMRA96v7t+c7O1s6YCTGkok6p9ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); 
+
+        *
+        {   
+            padding: 0%;
+            margin: 0%;
+            font-family: 'Roboto';
+            font-size: 2vw;
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+
+        body{
+            background-color: crimson;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container
+        {
+            width: 50%;
+            height:100%;
+            background-color: whitesmoke;
+            padding: 2%;
+            margin: 2%;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px black;
+        }
+
+        i
+        {
+            float: right;
+            font-size: 3vw;
+            color: #1a73e8;
+        }
+
+        .info
+        {
+            float: right;
+            font-size: 1.7vw;
+            color:#1a73e8 ;
+            background-color: white;
+            border-radius: 100%;
+        }
+
+        h1
+        {
+            font-size: 3vw;
+            text-align: center;
+        }
+
+        p
+        {
+            width: 100%;
+            margin-top: 3%;
+            margin-bottom: 3%;
+        }
+  
+        input[type=text]
+        {
+            width: 90%;
+        }
+
+        .pack
+        {
+            width: 100%;
+            height: 3vw;
+        }
+
+        .pack input[type=radio]
+        {
+           float: left;
+           width: 5%;
+           height: 3vw;
+        }
+
+        .pack label
+        {
+            float: left;
+            font-size: 2vw;
+            margin-top: 0%;
+            margin-left: 1%;
+            
+        }
+
+        .details
+        {
+            width: 31%;
+            height: 13vw;
+            float: left;
+            position: relative;
+            background-color: white;
+            margin-left: 2%;
+            display: flexbox;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 7%;
+            border-radius: 20px;
+            box-shadow: 0px 0px 3px black;
+        }
+
+        .display
+        {
+            width: 31%;
+            height: 13vw;
+            float: left;
+            position: relative;
+            background-color: white;
+            margin-left: 2%;
+            display: flexbox;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 7%;
+            border-radius: 20px;
+            box-shadow: 0px 0px 17px #398dfa;
+            transform: scale(1.05);
+        }
+
+        select{
+            width: 90%;
+            margin-bottom: 3%;
+        }
+
+        input[type=submit]
+        {
+            text-align: center;
+            width: 20%;
+            height: 3.5vw;
+            border-radius: 50px;
+            border: none;
+            background-color:#1a73e8 ;
+            color: white;
+        }
+
+        .status
+        {
+            width: 30%;
+            height: 3vw;
+            float: left;
+            margin-left: 2%;
+            text-align: center;
+            border-radius: 20px;
+        }
+
+        .active
+        {
+            background-color: #1a73e8;
+            color: white;
+        }
+
+        .disabled
+        {
+            background-color: grey;
+            color: white;
+        }
+
+        .statusicon
+        {
+            float: left;
+            font-size: 2.5vw;
+            margin-left: 7%;
+            margin-top: 2%;
+            margin-right: -5%;
+        }
+
+        .activeicon
+        {
+            color:white;
+        }
+
+        .disabledicon
+        {
+            color:lightgrey;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <form method="POST" action="/BookTicketApp/bookingdataadd/">
+            {% csrf_token %}
+            <h1>Plan A Tour<a href="/Travel_Buddy/home/"><i class="fas fa-home"></i></a></h1>
+            <br>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="90" style="width: 30%;height: 3vw;margin-top: 0%;"></div>
+              </div>
+              <div class="status active"><i class="fas fa-pen-square statusicon activeicon"></i>Booking</div>
+              <div class="status disabled"><i class="fas fa-money-check-alt statusicon disabledicon"></i>Payment</div>
+              <div class="status disabled"><i class="fas fa-check-circle statusicon disabledicon"></i>Sucess</div>
+              <br>
+            <p style="margin-top: 9%;">Booking ID</p>
+            <input type="text" name="bookingid" value="{{ randomid }}"  maxlength="6" readonly> 
+            <!-- if you put disabled the value will not get posted you wasted 2 hrs here :( -->
+            <p>Travelling From</p>
+            <input type="text" name="source" value="India" maxlength="20" readonly>
+            <p>To</p>
+            <select id="selectpackage" name="destination" onChange="if (this.selectedIndex) price_updater()" required>
+                <option disabled selected>Pls Select Your Package</option>
+                {% for package in packages %}
+                <option id="{{ package.amount }}" value="{{ package.id }}">{{ countryname|country_name:package.pCountry }}, {{package.pCity}} @ &#x20B9;{{package.amount}}</option>
+                {% endfor %}
+            </select>
+            
+
+            <p>Select Package<a href="/Travel_Buddy/package_detail/"><i style="color:green;" class="fas fa-info-circle fa=5x"></i></a></p>
+
+            <div class="pack">
+            <input type="radio" name="radio" id="r1" value="Common" onclick="myFunction()" checked>
+            <label>Common Pack</label>
+            </div>
+
+            <div class="pack">
+                <input type="radio" name="radio" id="r2" value="Special" onclick="myFunction()">
+                <label >Special Pack</label>
+            </div>
+
+            <div class="pack">
+                <input type="radio" name="radio" id="r3" value="Luxury" onclick="myFunction()" >
+                <label >Luxury Pack</label>
+            </div>
+
+            <p>Price for your package:</p>
+
+            <div class="details" id="pack1">
+                <h5>Common</h5>
+                <h6 id="commonprice">&#x20B9;0</h6>
+            </div>
+
+            <div class="details" id="pack2" style="background-color: silver;">
+                <h5>Special</h5>
+                <h6 id="specialprice">&#x20B9;0</h6>
+            </div>
+
+            <div class="details" id="pack3" style="background-color: gold;">
+                <h5>Luxury</h5>
+                <h6 id="luxuryprice">&#x20B9;0</h6>
+            </div>
+            
+            
+            <p>Departure date</p>
+            <input id="datefield" type="date" name="date" onload="setMinDate()" required>
+
+            <p>Number of person</p>
+            <input type="number" name="person" placeholder="" id="from" value="1" min="1" required>
+            <br>
+            <br>
+
+            <input type="submit" value="Next >">
+        </form>
+    </div>
+    <!-- <div class="wrapper">
+        <h2>Book tour</h2>
+            <form action="/BookTicketApp/bookingdataadd/" method="post">{% csrf_token %}
+            <label class="label">Booking id</label>
+            <input type="text" name="bookingid" value="{{ randomid }}"  readonly maxlength="6">
+            <label>Trvaelling From</label>
+            <select name="source">
+                <option>{{ country }}</option>
+            </select>
+            <label>To</label>
+            <select name="destination">
+                <option>Kabankalan</option>
+                <option>Himamaylan</option>
+                <option>DUmaguete</option>
+                <option>Hinigaran</option>
+                <option>Bago</option>
+                <option>Valladolid</option>
+                <option>Guimaras</option>
+                <option>Iloiolo</option>
+                <option>Dumangas</option>
+                <option>Palawan</option>
+                <option>Antique</option>
+                <option>Aklan</option>
+            </select>
+            <p style="color: red">{{ request.session.error3 }}</p>
+            <label>Package</label>
+            <select name="package">
+            {% for pack in packs %}
+                <option value='{{ pack.pname }}'>{{ pack.pname }}</option>
+
+            {% endfor %}
+            </select>
+
+                <label>Departure date</label>
+                <input id="datefield" type="date" name="date" onload="setMinDate()">
+                <script>
+                    setMinDate();
+                    function setMinDate(){
+                        var today = new Date();
+                        var dd = today.getDate();
+                        var mm = today.getMonth()+1;
+                        var yyyy = today.getFullYear();
+                        if(dd<10){
+                            dd='0'+dd
+                        }
+                        if(mm<10){
+                            mm='0'+mm
+                        }
+                        today = yyyy+'-'+mm+'-'+dd;
+                        document.getElementById("datefield").setAttribute("min", today);
+                    }
+                </script>
+                <label>No of person</label>
+            <input type="text" name="person" placeholder="" id="from" required>
+            <input type="submit" value="book" />
+            </form> -->
+    
+    </div>
+    <br>
+
+</div>
+</body>
+<script>
+    setMinDate();
+    function setMinDate(){
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1;
+        var yyyy = today.getFullYear();
+        if(dd<10){
+            dd='0'+dd
+        }
+        if(mm<10){
+            mm='0'+mm
+        }
+        today = yyyy+'-'+mm+'-'+dd;
+        document.getElementById("datefield").setAttribute("min", today);
+    }
+
+    function myFunction() {
+    var r =  document.getElementsByName("radio");
+    
+    if(r[0].checked)
+    {
+        document.getElementById("pack1").classList.add('display');
+        document.getElementById("pack2").classList.remove('display');
+        document.getElementById("pack3").classList.remove('display');
+    }
+
+    if(r[1].checked)
+    {
+        document.getElementById("pack1").classList.remove('display');
+        document.getElementById("pack2").classList.add('display');
+        document.getElementById("pack3").classList.remove('display');
+
+    }
+
+    if(r[2].checked)
+    {
+        document.getElementById("pack1").classList.remove('display');
+        document.getElementById("pack2").classList.remove('display');
+        document.getElementById("pack3").classList.add('display');
+    }
+
+    }
+
+    function price_updater(){
+        var select = document.getElementById('selectpackage');
+        var value1 = select.options[select.selectedIndex];
+        
+        console.log(value1)
+        document.getElementById("commonprice").innerHTML = '&#x20B9; '+parseInt(value1.id);
+        document.getElementById("specialprice").innerHTML = '&#x20B9; '+parseInt(value1.id*1.1);
+        document.getElementById("luxuryprice").innerHTML = '&#x20B9; '+parseInt(value1.id*1.2);
+        
+        
+    }
+
+</script>
+</html>
+
+		

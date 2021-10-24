@@ -13,4 +13,5 @@ urlpatterns=[
     path('destinations/',destinationsView),
     path('profile/',profile),
     path('package_detail/',package_detail),
+    path('aboutus/',aboutus),
 ]

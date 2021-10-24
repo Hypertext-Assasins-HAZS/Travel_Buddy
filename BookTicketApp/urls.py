@@ -10,6 +10,6 @@ urlpatterns=[
 	path('bookingdataadd/',bookingdataadd),
 	path('booking_history/', booking_history),
 	path('delete/',delete),
-	path('feedback/',feedback),
+	
 
 ]

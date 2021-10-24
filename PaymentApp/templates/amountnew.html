@@ -1,0 +1,303 @@
+<!-- book_Ticket.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" integrity="sha512-u7ppO4TLg4v6EY8yQ6T6d66inT0daGyTodAi6ycbw9+/AU8KMLAF7Z7YGKPMRA96v7t+c7O1s6YCTGkok6p9ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); 
+
+        *
+        {
+            padding: 0%;
+            margin: 0%;
+            font-family: 'Roboto';
+            font-size: 2vw;
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container
+        {
+            width: 50%;
+            height:100%;
+            background-color: whitesmoke;
+            padding: 2%;
+            margin: 2%;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px black;
+        }
+
+        .i
+        {
+            float: left;
+            font-size: 3vw;
+            color: #1a73e8;
+        }
+
+        h1
+        {
+            font-size: 3vw;
+            text-align: center;
+        }
+
+        .status
+        {
+            width: 30%;
+            height: 3vw;
+            float: left;
+            margin-left: 2%;
+            text-align: center;
+            border-radius: 20px;
+        }
+
+        .active
+        {
+            background-color: rgb(245, 185, 35);
+            color: white;
+        }
+
+        .disabled
+        {
+            background-color: grey;
+            color: white;
+        }
+
+        .statusicon
+        {
+            float: left;
+            font-size: 2.5vw;
+            margin-left: 7%;
+            margin-top: 2%;
+            margin-right: -5%;
+        }
+
+        .activeicon
+        {
+            color:white;
+        }
+
+        .disabledicon
+        {
+            color:lightgrey;
+        }
+
+        p
+        {
+            margin-top: 7%;
+        }
+
+
+        button
+        {
+            width: 100%;
+            height: 5vw;
+            border-style:ridge ;
+            border-color: inherit;
+            border-radius: 10px;
+            margin: 1%;
+            text-align: left;
+            padding: 2%;
+            background-color: whitesmoke;
+        }
+
+        button:hover
+        {
+            background-color: lightgrey;
+        }
+
+        .buttonicon
+        {
+            margin-right: 3%;
+            float: right;
+            font-size: 3vw;
+            margin-top: 0%;
+        }
+
+        .form
+        {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .form label
+        {
+            margin-left: 2%;
+            width: 30%;
+        }
+
+        .form input[type=text]
+        {
+            margin-left: 2%;
+            width: 63%;
+        }
+
+        .form .field
+        {
+            margin-left: 2%;
+            width: 40%;
+            padding: 15;
+        }
+
+        input[type=submit]
+        {
+            float: left;
+            text-align: center;
+            width: 25%;
+            height: 3.5vw;
+            margin-left: 2%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            border-radius: 50px;
+            border: none;
+            background-color:#1a73e8 ;
+            color: white;
+        }
+
+        input[type=submit]:hover
+        {
+            background-color:#1859ad ;
+            color: white;
+        }
+
+        .display
+        {
+            width: 100%;
+            height: 100%;
+            display: contents;
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+            <h1>Payment <a href="/BookTicketApp/book_ticket/"><i class="fas fa-arrow-circle-left i"></i></a></h1>
+            <br>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="90" style="width: 66.66%;height: 3vw;margin-top: 0%;"></div>
+              </div>
+              <div class="status active"><i class="fas fa-pen-square statusicon activeicon"></i>Booking</div>
+              <div class="status active"><i class="fas fa-money-check-alt statusicon activeicon"></i>Payment</div>
+              <div class="status disabled"><i class="fas fa-check-circle statusicon disabledicon"></i>Sucess</div>
+              <br>
+            
+            <p>Amount</p>
+            <input type="text" name="amount" value="&#x20B9;{{ total_amount }}"  readonly >
+            <br>
+            <br>
+            <p>Select mode of Payment</p>
+             <button id="btn1" onclick="myFunction1()">Credit card
+                <i class="fab fa-cc-mastercard buttonicon"></i>
+                <i class="fab fa-cc-stripe buttonicon"></i>
+                <i class="fab fa-cc-visa buttonicon"></i>
+            </button>
+
+            <div class="form" id="credit">
+                <form action="/PaymentApp/bill/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="amount" value="{{ request.session.total_amount_rs }}">
+                    <input type="hidden" name="mode" value="Credit-card">
+                    <label for="">Card Number</label>
+                    <input type="text" name="cardno" id="" placeholder="0000 0000 0000 0000" required>
+                    <label for="">Expiry Date</label>
+                    <input type="date" name="expired_date" id="datefield" class="field" onload="setMinDate()" required>
+                    <label for="">CVV</label>
+                    <input type="password" name="cvcno" id="" class="field" placeholder="0000" required>
+                    <input type="submit" value="Pay Now">
+                    <p style="float:right;margin-left:2%;">{{error}}</p>
+                </form>
+            </div>
+
+            <button id="btn2" onclick="myFunction2()">Debit card
+                <i class="fab fa-cc-mastercard buttonicon"></i>
+                <i class="fab fa-cc-stripe buttonicon"></i>
+                <i class="fab fa-cc-visa buttonicon"></i>
+            </button>
+            <div class="form" id="debit">
+                <form action="/PaymentApp/bill/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="amount" value="{{ request.session.total_amount_rs }}">
+                    <input type="hidden" name="mode" value="Debit-card">
+                    <label for="">Card Number</label>
+                    <input type="text" name="cardno" id="" placeholder="0000 0000 0000 0000" required>
+                    <label for="">Expiry Date</label>
+                    <input type="date" name="expired_date" id="datefield" class="field" onload="setMinDate()" required>
+                    <label for="">CVV</label>
+                    <input type="password" name="cvcno" id="" class="field" placeholder="0000" required>
+                    <input type="submit" value="Pay Now">
+                    <p style="float:right;margin-left:2%;">{{error}}</p>
+                </form>
+            </div>
+
+            <button id="btn3" onclick="myFunction3()">Amazon Pay
+                <i class="fab fa-amazon-pay buttonicon"></i>
+            </button>
+            <div class="form" id="amazon">
+                <form action="/PaymentApp/bill/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="amount" value="{{ request.session.total_amount_rs }}">
+                    <input type="hidden" name="mode" value="Amazon-pay">
+                    <label for="">Amazon Pay ID</label>
+                    <input type="text" name="cardno" id="" placeholder="">
+                    <input type="submit" value="Pay Now">
+                </form>
+            </div>
+    </div>
+   </div>
+    <br>
+
+</div>
+</body>
+<script>
+    setMinDate();
+    function setMinDate(){
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1;
+        var yyyy = today.getFullYear();
+        if(dd<10){
+            dd='0'+dd
+        }
+        if(mm<10){
+            mm='0'+mm
+        }
+        today = yyyy+'-'+mm+'-'+dd;
+        document.getElementById("datefield").setAttribute("min", today);
+    }
+
+    function myFunction1(){
+        document.getElementById("credit").classList.add('display');
+        document.getElementById("debit").classList.remove('display');
+        document.getElementById("amazon").classList.remove('display');
+    }
+
+    function myFunction2(){
+        document.getElementById("credit").classList.remove('display');
+        document.getElementById("debit").classList.add('display');
+        document.getElementById("amazon").classList.remove('display');
+    }
+
+    function myFunction3(){
+        document.getElementById("credit").classList.remove('display');
+        document.getElementById("debit").classList.remove('display');
+        document.getElementById("amazon").classList.add('display');
+    }
+
+</script>
+</html>
+
+		

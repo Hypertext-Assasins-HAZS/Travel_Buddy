@@ -1,0 +1,198 @@
+<!-- book_Ticket.html -->
+<!DOCTYPE html>
+{% load filters %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Successful</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" integrity="sha512-u7ppO4TLg4v6EY8yQ6T6d66inT0daGyTodAi6ycbw9+/AU8KMLAF7Z7YGKPMRA96v7t+c7O1s6YCTGkok6p9ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); 
+
+        *
+        {
+            padding: 0%;
+            margin: 0%;
+            font-family: 'Roboto';
+        }
+
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0%;
+            margin: 0%;
+        }
+
+        .container
+        {
+            width: 50%;
+            height:100%;
+            background-color: whitesmoke;
+            padding: 2%;
+            margin: 2%;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px black;
+        }
+
+        .i
+        {
+            float: right;
+            font-size: 3vw;
+            color: #1a73e8;
+        }
+
+        h1
+        {
+            font-size: 3vw;
+            text-align: center;
+        }
+
+        .status
+        {
+            width: 30%;
+            height: 3vw;
+            float: left;
+            margin-left: 2%;
+            text-align: center;
+            border-radius: 20px;
+            font-size: 2vw;
+            margin-top: 3%;
+        }
+
+        .active
+        {
+            background-color: rgb(3, 129, 3);
+            color: white;
+        }
+
+        .statusicon
+        {
+            float: left;
+            font-size: 2.5vw;
+            margin-left: 7%;
+            margin-top: 2%;
+            margin-right: -5%;
+        }
+
+        .activeicon
+        {
+            color:white;
+        }
+
+        .data
+        {
+            width: 100%;
+            height: 3.6vw;
+            font-size: 1.9vw;
+            text-align: left;
+            margin: 1%;
+        }
+
+        .data label
+        {
+            float: left;
+            width: 40%;
+            height: 3vw;
+            margin-top: 0%;
+        }
+
+        .data p{
+            float: left;
+            margin-left: 2%;
+            width: 51%;
+        }
+
+
+        input[type=submit]
+        {
+            text-align: center;
+            width: 25%;
+            height: 3.5vw;
+            margin-left: 2%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            font-size: 2vw;
+            border-radius: 50px;
+            border: none;
+            background-color:#1a73e8 ;
+            color: white;
+        }
+
+        input[type=submit]:hover
+        {
+            background-color:#1859ad ;
+            color: white;
+        }
+       
+
+        
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+            <h1>Booking Sucessful<a href="/Travel_Buddy/home/"><i class="fas fa-home i"></i></a></h1>
+            <br>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="90" style="width: 100%;height: 3vw;margin-top: 0%;"></div>
+              </div>
+              <div class="status active"><i class="fas fa-pen-square statusicon activeicon"></i>Booking</div>
+              <div class="status active"><i class="fas fa-money-check-alt statusicon activeicon"></i>Payment</div>
+              <div class="status active"><i class="fas fa-check-circle statusicon activeicon"></i>Sucess</div>
+              <br>
+              <br>
+              <br>
+              <br>
+              <h3>Booking Details</h3>
+              <br>
+            <div class="data">
+                <label>Booking ID :</label>
+                <p>{{ request.session.booking_id }}</p>
+            </div>
+            <div class="data">
+                <label>Source :</label>
+                <p>{{ request.session.source }}</p>
+            </div>
+            <div class="data">
+                <label>Destination :</label>
+                <p>{{ request.session.destinationCity }}, {{ countryname|country_name:request.session.destinationCountry }}</p>
+            </div>
+            <div class="data">
+                <label>Package Type :</label>
+                <p>{{ request.session.package_type }}</p>
+            </div>
+            <div class="data">
+                <label>Departure Date :</label>
+                <p>{{ request.session.date }}</p>
+            </div>
+            <div class="data">
+                <label>Number Of Persons :</label>
+                <p>{{ request.session.nop }}</p>
+            </div>
+            <br>
+            <br>
+            <h3>Payment Details</h3>
+              <br>
+            <div class="data">
+                <label>Payment ID :</label>
+                <p>{{ request.session.nop }}</p>
+            </div>
+            <div class="data">
+                <label>Amount :</label>
+                <p>{{ request.session.total_amount_rs }}</p>
+            </div>
+            <div class="data">
+                <label>Mode of Payment :</label>
+                <p>{{ request.session.paymentMode }}</p>
+            </div>
+            <a href="/BookTicketApp/booking_history/"><input type="submit" value="Done"></a>
+</div>
+</body>
+</html>
+
+		

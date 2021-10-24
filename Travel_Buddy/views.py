@@ -30,7 +30,7 @@ def user_login(request):
 		if user:
 			if user.is_active:
 				login(request, user)
-				return HttpResponseRedirect('/BookTicketApp/book_ticket/')
+				return HttpResponseRedirect('/Travel_Buddy/home')
 			else:
 				return render(request,'login.html',{"error":"Account not active !"})
 		else:
@@ -67,7 +67,7 @@ def destinationsView(request):
         'destinations':destinations,
         
     }
-    print(destinations[0].pdestination)
+    
     request.session['temp'] = "xyz"
     return render(request,'destinations.html',c)
      

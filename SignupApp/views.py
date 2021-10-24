@@ -29,13 +29,11 @@ def signup(request):
 	tmsUser_form = TMSUserForm()
 	if request.method == 'POST':
 		user_form = UserForm(data=request.POST)
-		tmsUser_form = TMSUserForm(request.POST,request.FILES)
+		tmsUser_form = TMSUserForm(request.POST,request.FILES) #check enctype in htmlform to get files
 		if tmsUser_form.is_valid() and user_form.is_valid():
 			user_form_instance = user_form.save(commit=False)
-			print(user_form.cleaned_data)
 			user_form_instance.set_password(user_form.cleaned_data['password1'])  #####bug found 
 			user_form_instance.save()
-			
 			tmsUser_form_instance = tmsUser_form.save(commit=False)
 			tmsUser_form_instance.user = user_form_instance
 			tmsUser_form_instance.save()
@@ -45,5 +43,6 @@ def signup(request):
 	else:
 		user_form = UserForm()
 		tmsUser_form = TMSUserForm()
+	print((request.FILES.get('pic')))
 	context = {'user_form':user_form, 'tmsUser_form':tmsUser_form, 'registered':registered}
-	return render(request,'signup.html',context)
+	return render(request,'signupnew.html',context)

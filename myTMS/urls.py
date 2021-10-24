@@ -13,7 +13,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', RedirectView.as_view(url='/Travel_Buddy/index/')),
     path('Travel_Buddy/', include('Travel_Buddy.urls')),
-    path('Destinations_info/', include('Destinations_info.urls')),
     path('SignupApp/', include('SignupApp.urls')),
     path('BookTicketApp/', include('BookTicketApp.urls')),
     path('PaymentApp/', include('PaymentApp.urls')),

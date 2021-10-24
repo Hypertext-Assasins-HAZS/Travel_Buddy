@@ -1,24 +1,215 @@
-{% extends 'home.html' %}
-<div class="agile-login">
-{% block content %}
+{% load static %}
+{% load filters %}
 
-    <center><h1 style="color:darkorange">Booking history</h1></center>
-    {% for book in bookings %}
-        <table width="100%" style=" border-radius:5px;color:white;padding: 20px;"  >
-        <tr><td>booking id:{{ book.booking_id }}</td><td>source:{{ book.source }}</td><td>destination:{{ book.destination }}</td><td>date of journy:{{ book.departure_date }}</td><td>amount:{{ book.amount }}</td></tr>
-        <tr><td colspan="5">
-            {% if today.day < book.departure_date.day and today.month <= book.departure_date.month and today.year <= book.departure_date.year %}
-            <form action="/BookTicketApp/delete/" method="post">{% csrf_token %}
-                <center><button name="cancel" value="{{ book.booking_id }}" style="background-color: lightblue;color: white;padding: 10px 25px;font-size: 15px;text-align: center;display: inline-block;" >CANCEL TICKET</button></center>
-            </form>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="shortcut icon" type="image/png" href="{%static " /Travel_Buddy/images/icon.PNG" %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+        integrity="sha512-u7ppO4TLg4v6EY8yQ6T6d66inT0daGyTodAi6ycbw9+/AU8KMLAF7Z7YGKPMRA96v7t+c7O1s6YCTGkok6p9ZA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+    * {
+        font-family: "Roboto";
+        font-size: 1.5vw;
+        margin: 0%;
+        padding: 0%;
+    }
+
+    .profile {
+
+        margin: 3%;
+        width: 95%;
+        height: 100vw;
+        margin-top: 9vw;
+        border-radius: 20px;
+        background-size: cover;
+        box-shadow: 0px 0px 10px black;
+    }
+
+    .profile .img1 {
+        width: 27%;
+        height: 25%;
+        margin-top: 1%;
+        margin-left: 3%;
+        float: left;
+        background-color: beige;
+        border-radius: 20px;
+    }
+
+    i {
+        margin: 1%;
+        margin-right: 5%;
+    }
+
+    .brand {
+        width: 95%;
+        height: 7vw;
+        float: left;
+        margin-left: 3%;
+        margin-top: 2%;
+        border-radius: 20px;
+    }
+
+    .brand .logo {
+        position: relative;
+        float: left;
+        height: 7vw;
+        z-index: 1;
+    }
+
+    .brand .verification {
+
+        position: relative;
+        float: right;
+        height: 5vw;
+        width: 19%;
+        z-index: 1;
+        font-size: 2vw;
+    }
+
+    .i {
+        float: left;
+        margin-left: 7%;
+        margin: 5%;
+        color: green;
+        background-color: white;
+        border-radius: 100%;
+        font-size: 2vw;
+    }
+
+    .status {
+        float: right;
+        margin-top: 2.5%;
+        margin-right: 5%;
+        font-size: 2.1vw;
+        font-weight: bolder;
+
+    }
+    
+    table{
+        padding:3%;
+    }
+ 
+    
+
+   
+</style>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand">
+                <i class="fas fa-chalkboard-teacher"></i>
+                Booking History
+            </a>
+            <a style="float:right; margin-left:73%;" class="navbar-brand" href="/Travel_Buddy/home/">
+                <i class="fas fa-home"></i>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><b style="font-size: 2vw;">Welcome
+                            {{request.user.first_name|title}}</b></h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body" style="background-color: black;">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Travel_Buddy/home/" style="font-size: 2vw;"><i
+                                    class="fas fa-home" style="font-size: 2vw;"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/Travel_Buddy/profile/"
+                                style="font-size: 2vw;">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/DocumentApp/userDocs/" style="font-size: 2vw;">Documents</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/BookTicketApp/book_ticket/" style="font-size: 2vw;">Plan a
+                                Tour</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/BookTicketApp/booking_history/"
+                                style="font-size: 2vw;">Booking History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" style="font-size: 2vw;">Report an issue</a>
+                        </li>
+                    </ul>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="profile">
+
+        <div class="brand">
+            <img class="logo" src="{%static "/Travel_Buddy/images/travellogo.png" %}" alt="logo Picture">
+            {% if request.user.tmsuser.verified %}
+            <div class="verification"><i class="fas fa-check-circle i"></i>
+                <h3 class="status">Verified User</h3>
+            </div>
             {% else %}
-                <form action="/BookTicketApp/feedback/" method="post">{% csrf_token %}
-                <center><button name="submit" value="submit" style="background-color:lightgreen;color: white;padding: 10px 25px;font-size: 15px;text-align: center;display: inline-block;" >RATE YOUR JOURNEY</button></center>
-            </form>
-
+            <div class="verification"><i class="fas fa-times-circle" style="color:red;"></i></i>
+                <h3 class="status">Not Verified</h3>
+            </div>
             {% endif %}
-        </td></tr>
-        </table>
-    {% endfor %}
-{% endblock %}
-</div>
+        </div>
+
+       
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">bookingId</th>
+                <th scope="col">From</th>
+                <th scope="col">Destination</th>
+                <th scope="col">packageType</th>
+                <th scope="col">Departure</th>
+                <th scope="col">Number of People</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for booking in bookings %}
+            
+              <tr>
+                <th scope="row">{{booking.booking_id}}</th>
+                <td>{{booking.source}}</td>
+                <td>{{countryname|country_name:booking.destinationCountry}}, {{booking.destinationCity}} </td>
+                <td>{{booking.ptype}}</td>
+                <td>{{booking.departure_date}}</td>
+                <td>{{booking.no_of_person}}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          
+          
+        
+        
+
+</body>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+</html>
