@@ -1,7 +1,6 @@
 ''' /BookTicketApp/urls.py '''
 
 from BookTicketApp.views import *
-from django.conf.urls import url
 from django.urls import path
 
 

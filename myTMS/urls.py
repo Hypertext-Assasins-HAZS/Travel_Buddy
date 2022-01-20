@@ -1,7 +1,7 @@
 ''' myTMS/urls.py(project's urls.py) '''
 
 from django.contrib import admin
-from django.conf.urls import url,include
+from django.conf.urls import include
 from django.urls import path
 from Travel_Buddy.views import home
 from django.conf import settings
